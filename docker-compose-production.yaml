@@ -25,10 +25,10 @@ services:
   web:
     image: haynesb/xdb:${TAG}
     command: >
-      sh -c "python manage.py migrate &&
-             daphne -b 0.0.0.0 -p 8080 xdb_price_chat.asgi:application"
+      sh -c "python manage.py migrate && python manage.py collectstatic &&
+             daphne -b 0.0.0.0 -p 80 xdb_price_chat.asgi:application"
     ports:
-      - 8080:8080
+      - 80:80
     volumes:
       - /tmp/xdb_db/mysqld:/run/mysqld
     env_file:
@@ -43,7 +43,7 @@ services:
     env_file:
       - ../env/prod.env
     depends_on:
-      - web
+      - redis
 
 volumes:
   production-xdb-db:

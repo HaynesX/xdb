@@ -55,6 +55,7 @@ CRONJOBS = [
     ('* */3 * * *', 'xdb.cron.force_fail_all_running_spreadsheet_tasks')
 ]
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # redis defaults
 Q_CLUSTER = {
@@ -66,7 +67,7 @@ Q_CLUSTER = {
     'save_limit': 0,
     'label': 'Django Q',
     'redis': {
-        'host': 'localhost',
+        'host': 'redis',
         'port': 6379,
         'db': 0,
         'password': None,
@@ -132,7 +133,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("localhost", 6379)],
+            "hosts": [("redis", 6379)],
         },
     },
 }
@@ -181,6 +182,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = "/bulk-management"
 
 LOGOUT_REDIRECT_URL = '/'
+
+STATIC_URL = '/static/'
 
 SESSION_COOKIE_SECURE = True
 
