@@ -37,6 +37,7 @@ CSRF_TRUSTED_ORIGINS = ["https://xdbpricechat.com"]
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -183,7 +184,7 @@ LOGIN_REDIRECT_URL = "/bulk-management"
 
 LOGOUT_REDIRECT_URL = '/'
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 SESSION_COOKIE_SECURE = True
 
