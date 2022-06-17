@@ -26,9 +26,9 @@ services:
     image: haynesb/xdb:${TAG}
     command: >
       sh -c "python manage.py migrate &&
-             daphne -b 0.0.0.0 -p 443 xdb_price_chat.asgi:application"
+             daphne -b 0.0.0.0 -p 8080 xdb_price_chat.asgi:application"
     ports:
-      - 443:443
+      - 8080:8080
     volumes:
       - /tmp/xdb_db/mysqld:/run/mysqld
     env_file:
