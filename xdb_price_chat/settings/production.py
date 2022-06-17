@@ -99,6 +99,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.csrf'
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -186,6 +187,8 @@ LOGOUT_REDIRECT_URL = '/'
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STATIC_URL = 'static/'
+
+SESSION_COOKIE_SAMESITE = 'None'
 
 SESSION_COOKIE_SECURE = True
 

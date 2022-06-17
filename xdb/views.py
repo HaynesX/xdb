@@ -192,6 +192,7 @@ def bulk_management(request):
     context["running_exports"] = runningExports
     context["successful_exports"] = successfulExports
     context["failed_exports"] = failedExports
+    context["ws_or_wss"] = os.environ['WS_OR_WSS']
 
 
 

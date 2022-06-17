@@ -7,7 +7,6 @@ var currentRandomGenWinners = null
 var currentURLPath = window.location.host
 
 
-const socket = new WebSocket('wss://' + currentURLPath + '/ws/export/')
 
 socket.onmessage = function(e) {
     const data = JSON.parse(e.data)
