@@ -1,0 +1,432 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="wrapper">
+
+        <div class="alert alert-success fade-in" role="alert" id="alert"></div>
+
+                <div class="main-front-container-management">
+
+
+<!-- Mark As Winner Modal START -->
+                    <div class="mark-as-winner-modal" id="myModal">
+                        <div class="modal-container-win" id="modalContainer">
+                            <div class="modal-title-section">
+                                <p class="font-modal-title">Add Winner</p>
+                            </div>
+                            <div class="modal-win-form">
+                                <div class="win-type-section">
+                                    <p class="font-modal-form-label" id="win-type-label">Win Type</p>
+                                    <details class="custom-select" id="win-type" win-type="">
+                                        <summary class="radios">
+                                            <input type="radio" name="item" id="default" title="----" checked>
+                                            <input type="radio" name="item" class="win-type-option" id="item1" title="Random Draw">
+                                            <input type="radio" name="item" class="win-type-option" id="item2" title="Soldier of the Month">
+                                            <input type="radio" name="item" class="win-type-option" id="item3" title="Tweet of the Week">
+                                        </summary>
+                                        <ul class="list ul-change">
+                                            <li class="li-change">
+                                                <label for="item1">Random Draw</label>
+                                            </li>
+                                            <li class="li-change">
+                                                <label for="item2">Soldier of the Month</label>
+                                            </li>
+                                            <li class="li-change">
+                                                <label for="item3">Tweet of the Week</label>
+                                            </li>
+                                            </li>
+                                        </ul>
+                                    </details>
+                                </div>
+                            </div>
+
+                            <div class="modal-win-form">
+                                <div class="win-type-section">
+                                    <p class="font-modal-form-label" id="prize-money-label">Prize Money $</p>
+                                    <input type="number" class="form__input" id="prize_money" placeholder="$$$" required="" min="0" max="9999999">
+                                </div>
+                            </div>
+
+                            <div class="modal-win-form">
+                                <div class="win-type-section">
+                                    <p class="font-modal-form-label" id="transaction-hash-label">Transaction Hash (Optional)</p>
+                                    <input type="text" class="form__input" id="transaction_hash" placeholder="..." required="" />
+                                </div>
+                            </div>
+
+                            <div class="modal-button-layer">
+                            <a class="btn btn-dark anim-scroll"
+                                href="#portfolio" target="" title="ABOUT" id="addWinButtonModal">ADD WIN
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+<!-- Mark As Winner Modal END -->
+
+
+
+
+<!-- Flags Modal START -->
+                    <div class="flags-modal" id="flags-modal">
+                        <div class="flags-modal-win" id="flags-modal-container">
+                            <div class="modal-title-section">
+                                <p class="font-modal-title">Flags</p>
+                            </div>
+                                {% for key, value in days.items %}
+                                    {% for post in value %}
+                                    <div class="post-flags-container" flag_post_id="{{ post.0.id }}">
+                                        {% if post.1|length > 0 %}
+                                        {% for flag in post.1 %}
+                                        <div class="flag">
+                                            <p class="flag-text">{{ flag }}</p>
+                                        </div>
+                                        {% endfor %}
+                                        {% else %}
+                                        <div class="title-container">
+                                        <div class="hero-caption">
+                                            <div class="hero-text">
+                                                <h1 class="m-b-30" style="color: green;">NO FLAGS</h1>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        {% endif %}
+                                    </div>
+                                    {% endfor %}
+                                    {% endfor %}                            
+                        </div>
+                    </div>
+<!-- Flags Modal END -->
+
+
+
+
+<!-- Mentions Modal START -->
+                    <div class="mentions-modal" id="mentions-modal">
+                        <div class="mentions-modal-win" id="mentions-modal-container">
+                            <div class="modal-title-section">
+                                <p class="font-modal-title">Mentions</p>
+                            </div>
+                                {% for key, value in days.items %}
+                                    {% for post in value %}
+                                    <div class="post-mentions-container" mention_post_id="{{ post.0.id }}">
+                                        {% if post.2|length > 0 %}
+                                        {% for mention in post.2 %}
+                                        <div class="mention">
+                                            <a href="https://twitter.com/{{ mention }}" target="_blank"><p class="mention-text">{{ mention }}</p></a>
+                                        </div>
+                                        {% endfor %}
+                                        {% else %}
+                                        <div class="title-container">
+                                            <div class="hero-caption">
+                                                <div class="hero-text">
+                                                    <h1 class="m-b-30" style="color: red;">NO MENTIONS</h1>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                    {% endfor %}
+                                    {% endfor %}
+                        </div>
+                    </div>
+<!-- Flags Modal END -->
+
+
+
+
+
+
+
+
+
+<!-- Announcements Modal START -->
+                    <div class="announcements-modal" id="announcements-modal">
+                        <div class="announcements-modal-win" id="announcements-modal-container">
+                            <div class="modal-title-section">
+                                <p class="font-modal-title">Announce Winner</p>
+                            </div>
+
+                            <div class="announcement-win-types">
+                                <button class="announcebtnwin" id="Random_Draw_Text_Button">Random Draw</button>
+                                <button class="announcebtnwin" id="Tweet_of_the_Week_Text_Button">Tweet of the Week</button>
+                                <button class="announcebtnwin" id="Soldier_of_the_Month_Text_Button">Soldier of the Month</button>
+                            </div>
+
+                            <div class="announcement-params">
+                                <div class="announcement-param-container">
+                                    <p style="color: black; font-size: 1rem;">@</p>
+                                    <div class="block"><input type="text" class="input-res" id="tg_username_announcement_input"></div>
+                                </div>
+
+                                <div class="announcement-param-container">
+                                    <p style="color: black; font-size: 1rem;">$</p>
+                                    <div class="block"><input type="text" class="input-res" id="prize_money_announcement_input"></div>
+                                </div>
+                            </div>
+
+                            {% autoescape off %}
+                            {% for key, value in announcement_messages_template_dict.items %}
+
+                            <div class="announcement-text-container" id="{{ key }}">
+                                {{ value }}
+                            </div>
+                            {% endfor %}
+                            {% endautoescape %}
+
+                            <div class="send-button-section">
+                                <button class="send-tg-message-button">Send Telegram Message</button>
+                            </div>
+                            </div>
+                            </div>
+<!-- Announcements Modal END -->
+
+
+
+
+
+
+
+<!-- View Wins Modal START -->
+                    <div class="view-wins-modal" id="viewAllWinsModal">
+                        <div class="view-wins-container-win" id="viewWinsModalContainer">
+                            <div class="modal-title-section-wins">
+                                <p class="font-modal-title">Wins</p>
+                            </div>
+                            <div>
+                                <table>
+                                    <thead>
+                                      <tr>
+                                        <th scope="col" id="win-type-column-header">Win Type</th>
+                                        <th scope="col" id="prize-money-column-header">Prize Money</th>
+                                        <th scope="col" id="transaction-column-header">Transaction</th>
+                                        <th scope="col">Action</th>
+                                      </tr>
+                                    </thead>
+                                    {% for key, value in days.items %}
+                                    {% for post in value %}
+                                    <tbody id="wins-elems--{{ post.0.id }}" style="display: none;">
+                                        {% if post.3|length != 0 %}
+                                        {% for eachWin in post.3 %}
+                                      <tr win_row_id="{{ eachWin.id }}">
+                                        <td scope="row" data-label="Win Type" class="win-type-edit-value" id="win-type-edit-value--{{ eachWin.id }}">{{ eachWin.win_type }}</td>
+                                        <td data-label="Prize Money" class="win-prize-edit-value" id="prize-money-edit-value--{{ eachWin.id }}">{{ eachWin.winning_amount }}</td>
+                                        {% if eachWin.winning_transaction != "" %}
+                                        <td data-label="Transaction" class="win-transaction-edit-value" id="transaction-edit-value--{{ eachWin.id }}">{{ eachWin.winning_transaction }}</td>
+                                        {% else %}
+                                        <td data-label="Transaction" class="win-transaction-edit-value" id="transaction-edit-value--{{ eachWin.id }}">N/A</td>
+                                        {% endif %}
+                                        <td scope="row" data-label="Win Type" class="win-type-edit-section" id="win-type-edit-section--{{ eachWin.id }}" style="display: none">
+                                            <div class="win-input-flex">
+                                                <div class="select" tabindex="1">
+                                                  </div>
+                                            </div>
+                                        </td>
+                                        <td data-label="Prize Money" class="prize-money-edit-section" id="prize-money-edit-section--{{ eachWin.id }}" style="display: none">
+                                            <div class="win-input-flex">
+                                                <input type="number" class="form__input_editWin" min="0" max="9999999">
+                                            </div>
+                                        </td>
+                                        <td data-label="Transaction" class="transaction-edit-section" id="transaction-edit-section--{{ eachWin.id }}" style="display: none">
+                                            <div class="win-input-flex">
+                                                <input type="text" class="form__input_editWin-transaction">
+                                            </div>
+                                        </td>
+                                        <td data-label="Action" class="actions-edit-value" id="actions-edit-value--{{ eachWin.id }}">
+                                            <div class="win-input-flex-buttons">
+                                                <div class="buttons-edit-win">
+                                                <i style="font-size:22px; color:black; " class="fa edit-win-button" id="edit-win-button" win_id="{{ eachWin.id }}">&#xf044;</i>
+                                                <i style="font-size:24px; color:red; " class="fa delete-win-button" id="delete-win-button" win_id="{{ eachWin.id }}">&#xf00d;</i>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td data-label="Action" class="action-edit-section" id="win-action-buttons--{{ eachWin.id }}" style="display: none">
+                                            <div class="win-input-flex-buttons">
+                                                <div class="buttons-edit-win">
+                                                    <i style="font-size:24px; color:rgb(255, 98, 0); " class="fa delete-win-changes-button" id="delete-win-changes-button" win_id="{{ eachWin.id }}">&#xf00d;</i>
+                                                    <i style="font-size:24px; color:rgb(64, 255, 0); " class="fa update-win-changes-button" id="update-win-changes-button" win_id="{{ eachWin.id }}">&#xf00c;</i>
+                                               
+                                                </div>
+                                            </div>
+                                        </td>
+                                      </tr>
+                                      {% endfor %}
+                                      {% endif %}
+                                    </tbody>
+                                    {% endfor %}
+                                    {% endfor %}
+                                  </table>
+                            </div>
+                        </div>
+                    </div>
+<!-- View Wins Modal END -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Dashboard Area START -->
+                    <div class="title-container">
+                        <div class="hero-caption">
+                            <div class="hero-text">
+                                <h1 class="m-b-30">DASHBOARD</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="admin-area">
+
+
+
+                        <div class="button-section">
+                            <a class="btn btn-dark anim-scroll"
+                                href="#" target="" title="Export to CSV">Export to CSV
+                            </a>
+                        </div>
+
+                        <div class="month-year-selection-section">
+                            <div class="dropdown-months">
+                                <button class="dropbtn-months">{{ monthChosen }}</button>
+                                <div class="dropdown-content-months">
+                                  <a href="1">Jan</a>
+                                  <a href="2">Feb</a>
+                                  <a href="3">Mar</a>
+                                  <a href="4">Apr</a>
+                                  <a href="5">May</a>
+                                  <a href="6">Jun</a>
+                                  <a href="7">Jul</a>
+                                  <a href="8">Aug</a>
+                                  <a href="9">Sep</a>
+                                  <a href="10">Oct</a>
+                                  <a href="11">Nov</a>
+                                  <a href="12">Dec</a>
+                                </div>
+                              </div>
+                        </div>
+
+                        <div class="dates-section">
+                            {% if days|length > 0 %}
+                            {% for key, value in days.items %}
+                            <div class="date-dropdown-container" id="{{key}}">
+                                <div class="date" id="date__{{key}}">
+                                    <div class="hero-caption">
+                                        <div class="hero-text">
+                                            <h1 class="m-b-30">{{key}}</h6>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="button-section-posts">
+                                    <a class="btn-posts btn-dark anim-scroll"
+                                        href="#portfolio" target="" title="ABOUT">Export to CSV
+                                    </a>
+                                    <a class="btn-posts btn-dark anim-scroll"
+                                        href="#portfolio" target="" title="ABOUT">Choose Random Winner
+                                    </a>
+                                </div>
+
+                                <div class="posts-content-container">
+                                    {% for post in value %}
+                                        {% if post.3|length == 0  %}
+                                    <div class="card-container" id="{{ post.0.id }}">
+                                        <div class="card-top-buttons">
+                                            <a href="https://twitter.com/XDB/status/{{ post.0.tweet_id }}" target="_blank" class="button-link"><div class="tweet-button telegram-username" tweet_button_id="{{ post.0.id }}"><p class="fa fa-twitter" style="font-size: 25px; color:rgb(0, 166, 255);"></p></div></a>
+                                            <a href="https://t.me/DigitalBitsPriceChat/{{ post.0.telegram_message_id }}" target="_blank" class="button-link"><div class="remove-button telegram-link"><p class="fa fa-telegram" style="font-size: 25px; color:rgb(0, 166, 255);"></p></div></a>
+                                        </div>
+                                        <div class="card-tweet-text-container" card_tweet_text_id="{{ post.0.id }}">{{ post.0.tweet_text }}</div>
+                                        <div class="card-meta-data-container border-card-section" border_card_section_one="{{ post.0.id }}">
+                                            <div class="card-meta-text-container">
+                                                <p class="font-sans upper-text" date_text_id="{{ post.0.id }}">{{ key }}</p>
+                                                <p class="font-sans decreased-margin" tg_username_text_id="{{ post.0.id }}">{{ post.0.user.telegram_username }}</p>
+                                                <p class="font-sans lower-text">{{ post.0.telegram_message_date|date:"g:iA" }} UTC</h3>
+                                            </div>
+                                        </div>
+                                        <div class="card-top-buttons border-card-section" card_top_buttons_id="{{ post.0.id }}">
+                                            <div class="icon-flex flags-button" flag_post_button_id="{{ post.0.id }}"><div class="fas fa-bell" style="color: red; font-size: 20px;"></div><p class="font-sans lower-text" style="padding-left: 0.6em;">{{ post.1|length }}</p></div>
+                                            <div class="icon-flex"><div class="fas fa-quote-right" style="color: red; font-size: 18px;"></div><p class="font-sans lower-text" style="padding-left: 0.6em;">{{ post.0.tweet_char_length }}</p></div>
+                                            <div class="icon-flex mentions-button" mention_post_button_id="{{ post.0.id }}"><div class="fas fa-user" style="color: red; font-size: 18px;"></div><p class="font-sans lower-text" style="padding-left: 0.6em;">{{ post.2|length }}</p></div>
+                                        </div>
+                                        <div class="card-actions border-card-section" card_actions_id="{{ post.0.id }}">
+                                            <div class="win-button win-button-radius" id="myBtn" mark_as_winner_id="{{ post.0.id }}"><p class="font-sans lower-text card-action-size card-button-icon">🎉</p></div>
+                                            <div class="announce-button" announce_winner_id="{{ post.0.id }}"><p class="font-sans lower-text card-action-size card-button-icon">📢</p></div>
+                                            <div class="remove-button" delete_post_id="{{ post.0.id }}"><p class="font-sans lower-text card-action-size card-button-icon">❌</p></div>
+                                        </div>
+                                    </div>
+
+                                    {% else %}
+
+                                    <div class="card-container win-color" id="{{ post.0.id }}">
+                                        <div class="card-top-buttons win-color">
+
+                                            <a href="https://twitter.com/XDB/status/{{ post.0.tweet_id }}" target="_blank" class="button-link"><div class="win-button-winner-pre-won telegram-username win-color" tweet_button_id="{{ post.0.id }}"><p class="fa fa-twitter" style="font-size: 25px; color:rgb(0, 166, 255);"></p></div></a>
+                                            <a href="https://t.me/DigitalBitsPriceChat/{{ post.0.telegram_message_id }}" target="_blank" class="button-link"><div class="remove-button telegram-link win-color"><p class="fa fa-telegram" style="font-size: 25px; color:rgb(0, 166, 255);"></p></div></a>
+                                        </div>
+                                        <div class="card-tweet-text-container-win win-color" card_tweet_text_id="{{ post.0.id }}">{{ post.0.tweet_text }}</div>
+                                        <div class="card-meta-data-container border-card-section-winner win-color" border_card_section_one="{{ post.0.id }}">
+                                            <div class="card-meta-text-container win-color">
+                                                <p class="win-color-text win-color-text-upper win-color" date_text_id="{{ post.0.id }}">{{ key }}</p>
+                                                <p class="win-color-text decreased-margin win-color" tg_username_text_id="{{ post.0.id }}">{{ post.0.user.telegram_username }}</p>
+                                                <p class="win-color-text win-color-text-lower win-color">{{ post.0.telegram_message_date|date:"g:iA" }} UTC</h3>
+                                            </div>
+                                        </div>
+                                        <div class="card-top-buttons border-card-section-winner win-color" card_top_buttons_id="{{ post.0.id }}">
+                                            <div class="icon-flex win-color flags-button" flag_post_button_id="{{ post.0.id }}"><div class="fas fa-bell" style="color: red; font-size: 20px;"></div><p class="win-color-text win-color-text-lower" style="padding-left: 0.6em;">{{ post.1|length }}</p></div>
+                                            <div class="icon-flex win-color"><div class="fas fa-quote-right" style="color: red; font-size: 18px;"></div><p class="win-color-text win-color-text-lower" style="padding-left: 0.6em;">{{ post.0.tweet_char_length }}</p></div>
+                                            <div class="icon-flex win-color mentions-button" mention_post_button_id="{{ post.0.id }}"><div class="fas fa-user" style="color: red; font-size: 18px;"></div><p class="win-color-text win-color-text-lower" style="padding-left: 0.6em;">{{ post.2|length }}</p></div>
+                                        </div>
+                                        <div class="card-actions border-card-section-winner win-color" card_actions_id="{{ post.0.id }}">
+                                            <div class="win-button-winner win-color" win_button_id="{{ post.0.id }}"><p class="font-sans lower-text card-action-size card-button-icon">🌟</p></div>
+                                            <div class="win-button win-color win-button-winner-pre-won" id="myBtn" mark_as_winner_id="{{ post.0.id }}"><p class="font-sans lower-text card-action-size card-button-icon">🎉</p></div>
+                                            <div class="announce-button-winner win-color announce-button" announce_winner_id="{{ post.0.id }}"><p class="font-sans lower-text card-action-size card-button-icon">📢</p></div>
+                                            <div class="remove-button win-color" delete_post_id="{{ post.0.id }}"><p class="font-sans lower-text card-action-size card-button-icon">❌</p></div>
+
+
+                                        </div>
+                                        <div class="win-elems" id="wins--{{ post.0.id }}">
+
+                                            {% for win in post.3 %}
+                                            <div id="win--{{ win.id }}">
+                                                <div class="win_type_value" id="win_type--{{ win.id }}">{{ win.win_type }}</div>
+                                                <div class="win_amount_value" id="win_amount--{{ win.id }}">{{ win.winning_amount }}</div>
+                                                {% if eachWin.winning_transaction != "" %}
+                                                <div class="win_transaction_value" id="win_transaction--{{ win.id }}">{{ win.winning_transaction }}</div>
+                                                {% else %}
+                                                <div class="win_transaction_value" id="win_transaction--{{ win.id }}">N/A</div>
+                                                {% endif %}
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            {% endfor %}
+
+
+                            {% else %}
+
+                            <div class="hero-caption">
+                                <div class="hero-text">
+                                    <h1 class="m-b-30">No Posts</h1>
+                                </div>
+                            </div>
+
+
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                </div>
+                {% endblock content %}
+
+<!-- Dashboard Area END -->
+                

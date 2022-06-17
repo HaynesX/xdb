@@ -1,0 +1,62 @@
+.footer {
+    background-color: $white;
+    padding: 140px 0;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #BBB;
+
+    .container-custom {
+        max-width: 1170px;
+        margin: 0 auto;
+        padding-left: 15px;
+        padding-right: 15px;
+
+        .contact-info {
+            text-align: center;
+            list-style: none;
+            padding: 0;
+            margin: 0 0 40px;
+            list-style: none;
+
+            li {
+                display: inline-block;
+                margin: 5px 12.5px;
+
+                a {
+                    color: #111;
+                }
+            }
+        }
+
+        .copyright {
+            text-align: center;
+
+            a {
+                color: #111;
+            }
+        }
+    }
+
+    .to-top-link {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 40px;
+        height: 40px;
+        background: #f5f5f5;
+        text-align: center;
+        line-height: 40px;
+        margin-left: -20px;
+        color: #111;
+
+        &:hover {
+            background: #111;
+            color: #fff;
+        }
+    }
+}

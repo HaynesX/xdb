@@ -1,0 +1,628 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="wrapper">
+
+
+
+
+        <div class="random-winner-modal" id="random_winner_modal">
+            <div class="random-winner-modal-win">
+                <div class="header_container header_container_small_size bottom_border">
+                    <h1 class="header_title header_title_small_size" style="color: black; font-size:medium">SELECTED WINNERS</h1>
+                </div>
+                
+                <div class="random-winners-container" id="random_winner_container">
+                </div>
+
+                <div class="confirm-buttons">
+                    <div class="posts_button" id="giveaway_confirm_winners" style="background-color: rgb(31, 156, 106); color:white;">CONFIRM</div>
+                    <div class="posts_button" id="giveaway_cancel_winners" style="background-color: rgb(156, 50, 31); color:white;">CANCEL</div>
+                </div>
+
+                
+                
+
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+        <div class="alert alert-success fade-in" role="alert" id="alert"></div>
+
+                <div class="bulk_management_main_container">
+
+                    <div class="header_container header_container_small_size bottom_border">
+                        <h1 class="header_title header_title_small_size">BULK MANAGEMENT</h1>
+                    </div>
+
+                    <div class="posts_and_filters_container">
+
+                        <div class="posts_container">
+
+                            <div class="header_container">
+                                <h2 class="header_title header_title_medium_size">POSTS</h2>
+                            </div>
+
+                            <div class="posts_manage_buttons_section">
+                                <div class="posts_button" id="posts_button_select_all">Select All</div>
+                                <div class="posts_button" id="posts_button_select_wins">Select Wins</div>
+                                <div class="posts_button" id="posts_button_select_non_wins">Select Non-Wins</div>
+                                <div class="posts_button_delete_post" id="posts_button_delete_post">Delete [Needs Doing]</div>
+                            </div>
+                            
+
+                            <div class="posts_added_container">
+
+
+
+
+
+
+
+
+
+                                
+
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="filters_entire_container">
+
+                            <div class="header_container">
+                                <h2 class="header_title header_title_medium_size">FILTERS</h2>
+                            </div>
+
+                            <div class="filters_and_actions_container">
+
+                                <div class="filters_container bottom_border">
+
+                                    <div class="filter__date_range_container" id="range">
+                                        <div class="date_range_icon date_range_input_start"><i class="fa fa-calendar"></i></div>
+                                        <input type="text" name="start" class="date_range_input" id="startDate_input">
+                                        <div class="date_range_to">to</div>
+                                        <input type="text" name="end" class="date_range_input date_range_input_end" id="endDate_input">
+                                    </div>
+
+                                    <div class="filter__win_type_container">
+                                        <div class="win_type_icon date_range_input_start"><i class="fa fa-star-o"></i></div>
+                                        <select class="win_type_input date_range_input_end" id="win_input_filter">
+                                            <option value="--">--</option>
+                                            <option value="ONLY Winning Posts">ONLY Winning Posts</option>
+
+                                            {% for eachWinType in win_types %}
+
+                                                <option value="{{ eachWinType }}">{{ eachWinType }}</option>
+
+                                            {% endfor %}
+
+
+                                            <option value="EXCLUDE Winning Posts">EXCLUDE Winning Posts</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="filter__username_container">
+                                        <div class="username_icon date_range_input_start">@</div>
+                                        <input type="text" class="username_input date_range_input_end" id="username_input">
+                                    </div>
+
+                                    <button class="test-ajax-send-posts"></button>
+
+         
+                                </div>
+
+                                <div class="actions_container">
+
+                                    <div class="header_container header_container_small_size">
+                                        <h2 class="header_title header_title_small_size">ACTIONS</h2>
+                                    </div>
+
+
+
+
+                                    <div class="actions_added_container">
+
+                                        <div class="action_flex_box">
+
+                                            <div class="action_container">
+
+                                                GENERATE RANDOM WINNERS
+
+
+                                            </div>
+
+
+                                            <div class="action_buttons_container collapsed_actions">
+
+                                                <div class="actions_buttons_content">
+
+                                                    <div class="buttons_flex_container">
+                                                        <div class="action__win_type_container">
+                                                            <div class="win_type_icon date_range_input_start"><i class="fa fa-star-o"></i></div>
+                                                            <select class="win_type_input date_range_input_end" id="win_input">
+                                                                {% for eachWinType in win_types %}
+                                                                    <option value="{{ eachWinType }}">{{ eachWinType }}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+    
+                                                        <div class="action__prize_container">
+                                                            <div class="dollar_icon date_range_input_start">$</div>
+                                                            <input type="number" class="dollar_input date_range_input_end" min="0" value=0.00 id="prize_money_generate_random_input">
+                                                        </div>
+    
+                                                        <div class="action__total_winners_container">
+                                                            <div class="win_type_icon date_range_input_start tooltip"><span class="tooltiptext">Total Amount of Winners to be Chosen</span><i class="fa fa-group"></i></div>
+                                                            <input type="number" class="dollar_input date_range_input_end" min="1" step="1" value=1 id="total_winners_generate_random_input">
+                                                        </div>
+    
+                                                        <div class="action__multiple_winners_container">
+                                                            <div class="win_type_icon date_range_input_start"><input type="checkbox"  id="allow_duplicate_wins_generate_random_input"></div>
+                                                            <div class="multiple_winner_text date_range_input_end">Allow Duplicate Wins?</div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="buttons_flex_container">
+                                                        <div class="posts_button" id="generate_wins">Generate Wins</div>
+                                                    </div>
+
+
+                                                    
+
+
+
+                                                </div>
+
+
+                                            </div>
+
+
+
+                                        </div>
+
+
+
+
+
+
+
+
+
+
+
+                                        <div class="action_flex_box">
+
+                                            <div class="action_container">
+
+                                                ADD WINS
+
+
+                                            </div>
+
+
+                                            <div class="action_buttons_container collapsed_actions">
+
+                                                <div class="actions_buttons_content">
+
+                                                    <div class="buttons_flex_container">
+
+                                                        <div class="action__win_type_container">
+                                                            <div class="win_type_icon date_range_input_start"><i class="fa fa-star-o"></i></div>
+                                                            <select class="win_type_input date_range_input_end" id="add_win_input">
+                                                                {% for eachWinType in win_types %}
+                                                                    <option value="{{ eachWinType }}">{{ eachWinType }}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+    
+                                                        <div class="action__prize_container">
+                                                            <div class="dollar_icon date_range_input_start">$</div>
+                                                            <input type="number" class="dollar_input date_range_input_end" min="0" value=0.00 id="prize_money_add_win_input">
+                                                        </div>
+    
+                                                    </div>
+
+                                                    <div class="buttons_flex_container">
+                                                        <div class="posts_button" id="add_wins">Add Wins</div>
+                                                    </div>
+
+
+                                                    
+
+
+
+                                                </div>
+
+
+                                            </div>
+
+
+
+                                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        <div class="action_flex_box">
+
+                                            <div class="edit_win_main_container">
+
+                                                EDIT / DELETE WINS
+
+
+                                            </div>
+
+
+                                            <div class="action_buttons_container collapsed_edit_win">
+
+                                                <div class="manage_wins_content">
+
+                                                    <div class="buttons_flex_container_edit_win">
+
+
+
+                                                        <div class="edit_win_buttons_container">
+
+                                                            <div class="edit_win__win_type_container">
+                                                                <div class="win_type_edit_win_icon date_range_input_start"><i class="fa fa-star-o"></i></div>
+                                                                <select class="edit_win_win_type_input" id="edit_win_input">
+
+                                                                    {% for eachWinType in win_types %}
+                                                                        <option value="{{ eachWinType }}">{{ eachWinType }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            </div>
+        
+                                                            <div class="edit_win__prize_container">
+                                                                <div class="dollar_edit_win_icon">$</div>
+                                                                <input type="number" class="edit_win_dollar_input" min="0" value=0.00 id="prize_money_edit_win_input">
+                                                            </div>
+
+                                                            <div class="posts_button_edit date_range_input_end" id="edit_wins">Edit</div>
+
+
+                                                        </div>
+
+                                                        <!-- <div class="delete_win_buttons_container"> -->
+
+                                                            
+                                                            <div class="posts_button_delete_win" id="delete_wins">Delete Wins</div>
+
+
+
+                                                        <!-- </div> -->
+
+
+                                                        
+    
+                                                        
+                                                    </div>
+
+                                                    <div class="post_wins_cards_container">
+                                                        
+                                                    </div>
+
+
+                                                    
+
+
+
+                                                </div>
+
+
+                                            </div>
+
+
+
+                                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                        <div class="action_flex_box">
+
+                                            <div class="action_container">
+
+                                                EXPORT CSV
+
+
+                                            </div>
+
+
+                                            <div class="action_buttons_container collapsed_actions">
+
+                                                <div class="csv_content">
+
+                                                    <div class="csv_content_container border_right">
+                                                        <h3 class="csv_sub_title">SETTINGS</h3>
+                                                        <div class="export_csv_buttons_container">
+
+                                                            <div class="export_type_button_container">
+                                                                <div class="export_type_button_icon">
+                                                                    <input type="checkbox" id="export_posts_checkbox">
+                                                                </div>
+                                                                <div class="export_type_button_text">Export Posts</div>
+                                                            </div>
+
+
+                                                            
+
+                                                            <div class="export_wins_container">
+
+                                                                <div class="export_type_button_container">
+                                                                    <div class="export_type_button_icon">
+                                                                        <input type="checkbox" id="export_wins_checkbox">
+                                                                    </div>
+                                                                    <div class="export_type_button_text">Export Wins</div>
+                                                                </div>
+
+                                                                
+
+                                                                <div class="export_win_types_container">
+
+                                                                    <div class="win_type_option_button_container">
+                                                                        <div class="win_type_option_button_icon">
+                                                                            <input type="radio" id="radio_export_All_Wins" name="Win_Type_Export_Choice" value="All_Wins" class="win_type_export_option" checked>
+                                                                        </div>
+                                                                        <div class="win_type_option_button_text">All Win Types</div>
+                                                                    </div>
+
+                                                                    {% for eachWinType in win_types %}
+
+                                                                    <div class="win_type_option_button_container">
+                                                                        <div class="win_type_option_button_icon">
+                                                                            <input type="radio" id="radio_export_{{ eachWinType }}" name="Win_Type_Export_Choice" class="win_type_export_option" value="{{ eachWinType }}">
+                                                                        </div>
+                                                                        <div class="win_type_option_button_text">{{ eachWinType }}</div>
+                                                                    </div>
+
+                                                                    {% endfor %}
+
+                                                                    
+
+
+
+
+
+
+                                                                </div>
+
+                                                                
+                                                                
+
+
+
+
+                                                            </div>
+
+                                                            <div class="export_csv_button" id="export_csv">Export</div>
+                                                            
+
+
+
+
+
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+
+                                                    <div class="csv_content_container">
+                                                        <h3 class="csv_sub_title">FILES</h3>
+                                                        <div class="export_csv_files_container">
+
+
+                                                            {% for eachExport in running_exports %}
+
+                                                            <div class="csv_file">
+                                                                <div class="csv_file_text_container">{{ eachExport.date_added|date:"d/m/Y H:i"  }}</div>
+                                                                <a id="{{ eachExport.id }}" class="csv_file_status_container csv_file_status_running date_range_input_end"><i id="icon-{{ eachExport.id }}" class="fa fa-spinner fa-spin" aria-hidden="true" style="font-size:15px"></i></a>
+                                                            </div>
+
+                                                            {% endfor %}
+
+
+
+
+
+                                                            {% for eachExport in successful_exports %}
+
+                                                            
+
+                                                            <div class="csv_file">
+                                                                <div class="csv_file_text_container">{{ eachExport.date_added|date:"d/m/Y H:i"  }}</div>
+                                                                <a id="{{ eachExport.id }}" href="/export_csv/{{ eachExport.id }}" class="csv_file_status_container csv_file_status_successful date_range_input_end"><i id="icon-{{ eachExport.id }}" class="fa fa-arrow-down" style="font-size:15px"></i></a>
+                                                            </div>
+
+                                                            {% endfor %}
+
+
+
+
+
+                                                            {% for eachExport in failed_exports %}
+
+                                                            <div class="csv_file">
+                                                                <div class="csv_file_text_container">{{ eachExport.date_added|date:"d/m/Y H:i"  }}</div>
+                                                                <a id="{{ eachExport.id }}" class="csv_file_status_container csv_file_status_fail date_range_input_end"><i id="icon-{{ eachExport.id }}" class="fa fa-exclamation-triangle" style="font-size:15px"></i></a>
+                                                            </div>
+
+                                                            {% endfor %}
+
+                                                            
+                                                            
+
+                                                            
+                                                            
+
+
+
+
+                                                        </div>
+                                                    </div>
+
+
+                                                    
+
+
+
+                                                </div>
+
+
+                                            </div>
+
+
+
+                                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    </div>
+
+
+
+                                </div>
+                            
+                            
+                            </div>
+
+                            
+                            
+                        </div>
+
+
+                        
+
+                    </div>
+
+
+                    <div class="csv_container"></div>
+
+
+
+                </div>
+     </div>
+{% endblock content %}

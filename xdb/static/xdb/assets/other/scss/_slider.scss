@@ -1,0 +1,194 @@
+.wrapper {
+    position: relative;
+    margin-left: 250px;
+
+    @media (max-width: 991px) {
+        margin-left: 0;
+        overflow-x: hidden;
+    }
+
+    .main-slider {
+        .cam-container {
+            &::before {
+                background: rgba(34, 34, 34, 0.3);
+                content: "";
+                left: 0;
+                top: 0;
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                z-index: 0;
+            }
+        }
+
+        .slick-dotted.slick-slider {
+            margin-bottom: 0;
+        }
+
+        .slick-slide img {
+            height: 100vh;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .bg-film {
+            &::before {
+                background-image: url(../images/dot.gif);
+                opacity: 0.15;
+            }
+        }
+
+        .hero-caption {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+
+            h6 {
+                font-size: 14px;
+                line-height: 1.4;
+                margin: 0 0 20px;
+                letter-spacing: 6px;
+                color: $white;
+                margin-bottom: 30px;
+                font-weight: 400;
+
+                @media (max-width: 667px) {
+                    letter-spacing: 2px;
+                }
+
+                &.last-text {
+                    margin-bottom: 60px;
+                }
+            }
+
+            h1 {
+                letter-spacing: 20px;
+                font-weight: 300;
+                font-size: 54px;
+                line-height: 1.4;
+                margin-bottom: 30px;
+                color: $white;
+
+                @media(max-width: 768px) {
+                    font-size: 38px;
+                }
+
+                @media (max-width: 667px) {
+                    letter-spacing: 10px;
+                    font-size: 30px;
+                }
+            }
+
+            .herobanner-text {
+                color: #111;
+            }
+        }
+
+        .slick-arrow {
+            background: $white;
+            display: block;
+            height: 46px;
+            width: 46px;
+            top: 50%;
+            margin: -23px 10px 0;
+            padding: 0;
+            opacity: 0;
+            text-align: center;
+            line-height: 46px;
+            font-size: 0;
+            color: #111;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+            z-index: 9;
+
+            &::before {
+                color: #111;
+                font-family: "FontAwesome";
+                display: inline-block;
+                vertical-align: middle;
+                font-weight: 400;
+                font-size: 17px;
+                line-height: 17px;
+            }
+
+            &.slick-next {
+                right: -20px;
+
+                &::before {
+                    content: "\f105";
+                    
+                }
+            }
+
+            &.slick-prev {
+                left: -20px;
+
+                &::before {
+                    content: "\f104";
+                }
+            }
+        }
+
+        &:hover {
+            .slick-arrow {
+                opacity: 0.5;
+
+                &:hover {
+                    opacity: 1;
+                }
+
+                &.slick-next {
+                    right: 0;
+                }
+    
+                &.slick-prev {
+                    left: 0;
+                }
+            }
+        }
+
+        .slick-dots {
+            bottom: 10px;
+
+            li {
+                background: rgba(255, 255, 255, 0.5);
+                display: inline-block;
+                overflow: hidden;
+                height: 4px;
+                width: 24px;
+                margin: 6px 4px;
+                z-index: 1000;
+                -webkit-border-radius: 0px;
+                -moz-border-radius: 0px;
+                border-radius: 0px;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                -o-box-shadow: none;
+                box-shadow: none;
+                -webkit-transition: all 0.3s;
+                -moz-transition: all 0.3s;
+                -o-transition: all 0.3s;
+                transition: all 0.3s;
+
+                &.slick-active {
+                    background: $white;
+                }
+            }
+        }
+    }
+
+    .divider {
+        border-color: #f5f5f5;
+        margin: 0;
+        border: 0;
+        border-top: 1px solid #eee;
+    }
+}
