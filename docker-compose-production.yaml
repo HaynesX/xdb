@@ -22,7 +22,7 @@ services:
 
 
   web:
-    image: haynesb/haynes-portfolio:${TAG}
+    image: haynesb/xdb:${TAG}
     command: >
       sh -c "python manage.py wait_for_db &&
              python manage.py migrate &&
@@ -36,7 +36,7 @@ services:
         - DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE}
   
   django-q:
-    image: haynesb/haynes-portfolio:${TAG}
+    image: haynesb/xdb:${TAG}
     command: python manage.py qcluster
     depends_on:
       - redis
