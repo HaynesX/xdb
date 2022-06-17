@@ -121,9 +121,11 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': os.environ['PROD_MYSQL_DATABASE_NAME'],
-        'USER': os.environ['PROD_MYSQL_DATABASE_USER'],
-        'PASSWORD': os.environ['PROD_MYSQL_DATABASE_PASSWORD']
+        'NAME': 'mydatabase',
+        'USER': 'root',
+        'PASSWORD': 'some_password',
+        'ROOT_PASSWORD': 'some_password',
+        'HOST': ''
     }
 }
 
