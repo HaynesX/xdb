@@ -20,10 +20,8 @@ import environ
 
 
 
-# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "xdb_price_chat.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "xdb_price_chat.conduit.settings.production")
 
-env = environ.Env()
-environ.Env.read_env()
 
 
 
@@ -40,9 +38,9 @@ SECRET_KEY = 'django-insecure-#+b(*&q5re(z)#0k$sy(q1sgm$muv9z9#us6nx1sep+nh2g(c+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [env('DJANGO_DEVELOPMENT_NGROK_URL'), "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
-CSRF_TRUSTED_ORIGINS = [f"https://{env('DJANGO_DEVELOPMENT_NGROK_URL')}"]
+CSRF_TRUSTED_ORIGINS = []
 # Application definition
 
 INSTALLED_APPS = [
