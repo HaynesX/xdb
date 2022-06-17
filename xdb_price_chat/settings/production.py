@@ -123,9 +123,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', 
         'NAME': os.environ['PROD_MYSQL_DATABASE_NAME'],
         'USER': os.environ['PROD_MYSQL_DATABASE_USER'],
-        'PASSWORD': os.environ['PROD_MYSQL_DATABASE_PASSWORD'],
-        'HOST': '127.0.0.1',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
+        'PASSWORD': os.environ['PROD_MYSQL_DATABASE_PASSWORD']
     }
 }
 
