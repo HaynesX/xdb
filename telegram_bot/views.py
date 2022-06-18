@@ -1,4 +1,5 @@
 from ast import For, excepthandler
+from curses import KEY_EXIT
 import json
 import os
 from datetime import datetime
@@ -44,7 +45,8 @@ auth_data = {
 giveawayResponses = {
 	"MAX_5_POSTS_REACHED": "❗ You Have Posted the Maximum of 5 Tweets Today. \n<b>Please Wait Until Tomorrow to Post Again!</b> ❗",
 	"DUPLICATE_TWEETS": "🚫 <b>Tweet already in giveaway!</b> \nSubmission NOT Added! 🚫",
-	"POSTS_ADDED": "<b>Submission Added!</b> 🎉"
+	"POSTS_ADDED": "<b>Submission Added!</b> 🎉",
+	"INVALID_TWEET": "ERROR. This seems to be an invalid tweet."
 }
 
 giveawayIgnoreResponses = ["NO_POSTS"]
@@ -203,12 +205,16 @@ class ReceiveMessageBotView(View):
 			'tweet.fields': 'created_at'
 		}
 
-		tweet_response = requests.get(getTweetsURL, headers=auth_headers, params=params)
-		
-		with open("out-debug3.txt", 'w+') as f:
-			f.write(f"{tweet_response.content}")
-			f.write(f"\n\n")
-			f.write(f"{params}")
+		try:
+			tweet_response = requests.get(getTweetsURL, headers=auth_headers, params=params)
+		except KeyError:
+			with open("out-debug3.txt", 'w+') as f:
+				f.write(f"{tweet_response.content}")
+				f.write(f"\n\n")
+				f.write(f"{params}")
+				
+			return "INVALID_TWEET"
+
 		
 
 		
