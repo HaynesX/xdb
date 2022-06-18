@@ -55,7 +55,6 @@ CRONJOBS = [
     ('* */3 * * *', 'xdb.cron.force_fail_all_running_spreadsheet_tasks')
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # redis defaults
 Q_CLUSTER = {
@@ -186,9 +185,16 @@ LOGIN_REDIRECT_URL = "/bulk-management"
 
 LOGOUT_REDIRECT_URL = '/'
 
-STATIC_ROOT = '/static/'
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 SESSION_COOKIE_SAMESITE = 'None'
 
