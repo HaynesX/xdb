@@ -66,6 +66,9 @@ class ReceiveMessageBotView(View):
 			user_id = t_message["from"]["id"] # User ID of the Message
 			message_id = t_message["message_id"] # Message ID of the Message
 			t_chatID = t_message["chat"]["id"] # Chat ID of the Message (Channel ID)
+			
+			with open("out.txt", 'w') as f:
+				f.write(f"{t_chatID} //// {CHAT_ID}")
 
 
 			# If-Else Statement to set Username as their "@HANDLE" IF THERE IS A HANDLE, or their "FirstName" if they haven't set a Username.
