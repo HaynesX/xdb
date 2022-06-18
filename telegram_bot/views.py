@@ -21,7 +21,7 @@ TELEGRAM_URL = "https://api.telegram.org/bot"
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TWITTER_API_KEY = os.getenv("TWITTER_API_KEY")
 TWITTER_BEARER_TOKEN = os.getenv("TWITTER_BEARER_TOKEN")
-CHAT_ID = "1055803381"
+CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 
 
@@ -59,7 +59,6 @@ class ReceiveMessageBotView(View):
 	def post(self, request, *args, **kwargs):
 		print(request)
 		t_data = json.loads(request.body) # Telegram Message Request converted to a Dictionary
-		print(t_data)
 
 		# The purpose of this try-except statement is to ensure that the t_data dictionary contains the correct data.
 		try:
@@ -90,10 +89,10 @@ class ReceiveMessageBotView(View):
 		
 
 		if "#giveaway" in text:
-			giveawayVerifyResponse = self.verifyGiveawayPost(text, t_chatID, message_id, user_id, username)
+			giveawayVerifyResponse = self.verifyGiveawayPost(text, CHAT_ID, message_id, user_id, username)
 
 			if giveawayVerifyResponse not in giveawayIgnoreResponses:
-				self.send_message(giveawayResponses[giveawayVerifyResponse], t_chatID, message_id)
+				self.send_message(giveawayResponses[giveawayVerifyResponse], CHAT_ID, message_id)
 
 
 		return JsonResponse({"ok": "POST request processed"})
