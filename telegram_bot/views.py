@@ -205,22 +205,20 @@ class ReceiveMessageBotView(View):
 			'tweet.fields': 'created_at'
 		}
 
+
+		tweet_response = requests.get(getTweetsURL, headers=auth_headers, params=params)
+
+
+		
+
+		
+
 		try:
-			tweet_response = requests.get(getTweetsURL, headers=auth_headers, params=params)
+			responseDict = tweet_response.json()["data"]
 		except KeyError:
-			with open("out-debug3.txt", 'w+') as f:
-				f.write(f"{tweet_response.content}")
-				f.write(f"\n\n")
-				f.write(f"{params}")
-				
 			return "INVALID_TWEET"
-
 		
-
 		
-
-
-		responseDict = tweet_response.json()["data"]
 
 		tweetsParsed = []
 
