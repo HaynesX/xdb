@@ -67,8 +67,7 @@ class ReceiveMessageBotView(View):
 			message_id = t_message["message_id"] # Message ID of the Message
 			t_chatID = t_message["chat"]["id"] # Chat ID of the Message (Channel ID)
 			
-			with open("out.txt", 'w') as f:
-				f.write(f"{t_chatID} //// {CHAT_ID}")
+			
 
 
 			# If-Else Statement to set Username as their "@HANDLE" IF THERE IS A HANDLE, or their "FirstName" if they haven't set a Username.
@@ -205,6 +204,14 @@ class ReceiveMessageBotView(View):
 		}
 
 		tweet_response = requests.get(getTweetsURL, headers=auth_headers, params=params)
+		
+		with open("out-twitter.txt", 'w') as f:
+			json.dump(tweet_response, f)
+		
+
+		print(tweet_response)
+
+
 		responseDict = tweet_response.json()["data"]
 
 		tweetsParsed = []
