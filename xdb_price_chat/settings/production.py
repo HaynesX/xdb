@@ -186,6 +186,8 @@ LOGIN_REDIRECT_URL = "/bulk-management"
 
 LOGOUT_REDIRECT_URL = '/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATIC_URL = 'static/'
 
 SESSION_COOKIE_SAMESITE = 'None'
