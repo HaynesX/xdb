@@ -33,7 +33,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "xdbpricechat.com", "0.0.0.0"]
 
-CSRF_TRUSTED_ORIGINS = ["https://xdbpricechat.com"]
+CSRF_TRUSTED_ORIGINS = ["https://xdbpricechat.com", "http://xdbpricechat.com"]
 # Application definition
 
 INSTALLED_APPS = [
@@ -180,6 +180,8 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = "/bulk-management"
+
+LOGIN_URL = '/login'
 
 LOGOUT_REDIRECT_URL = '/'
 
