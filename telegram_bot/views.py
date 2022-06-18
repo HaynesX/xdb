@@ -205,8 +205,10 @@ class ReceiveMessageBotView(View):
 
 		tweet_response = requests.get(getTweetsURL, headers=auth_headers, params=params)
 		
-		with open("out-debug1.txt", 'w') as f:
+		with open("out-debug3.txt", 'w+') as f:
 			f.write(f"{tweet_response.content}")
+			f.write(f"\n\n")
+			f.write(f"{params}")
 		
 
 		
