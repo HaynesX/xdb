@@ -28,9 +28,9 @@ services:
       sh -c "
       python manage.py migrate &&
       python manage.py collectstatic &&
-      daphne -b 0.0.0.0 -p 80 xdb_price_chat.asgi:application"
+      daphne -e ssl:443:privateKey=ssl/key.pem:certKey=ssl/crt.pem xdb_price_chat.asgi:application"
     ports:
-      - 80:80
+      - 443:443
     volumes:
       - /tmp/xdb_db/mysqld:/run/mysqld
       - ../env:/home/app/ssl

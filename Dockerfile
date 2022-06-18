@@ -9,4 +9,4 @@ RUN pip install -r /home/app/requirements.txt
 
 COPY . /home/app
 
-EXPOSE 80
+EXPOSE 443
