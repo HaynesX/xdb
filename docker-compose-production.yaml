@@ -36,6 +36,8 @@ services:
       - /tmp/xdb_db/mysqld:/run/mysqld
       - ../env:/home/app/ssl
       - ../exports:/home/app/xdb/exports
+      - ../staticfiles:/home/app/xdb_price_chat/staticfiles
+
     env_file:
       - ../env/prod.env
     depends_on:

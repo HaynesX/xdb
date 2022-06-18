@@ -179,15 +179,16 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGIN_URL = '/login/'
+
 LOGIN_REDIRECT_URL = "/bulk-management"
 
-LOGIN_URL = 'login/'
 
 LOGOUT_REDIRECT_URL = '/'
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-STATIC_URL = 'static/'
+STATIC_URL = 'staticfiles/'
 
 SESSION_COOKIE_SAMESITE = 'None'
 
