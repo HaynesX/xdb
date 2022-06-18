@@ -28,7 +28,7 @@ services:
       sh -c "
       python manage.py migrate &&
       python manage.py collectstatic &&
-      nohup python manage.py qcluster --settings xdb_price_chat.settings.production &>/dev/null & &&
+      nohup python manage.py qcluster --settings xdb_price_chat.settings.production &>/dev/null &&
       daphne -e ssl:443:privateKey=ssl/key.pem:certKey=ssl/crt.pem:extraCertChain=ssl/chain.pem xdb_price_chat.asgi:application"
     ports:
       - 443:443
