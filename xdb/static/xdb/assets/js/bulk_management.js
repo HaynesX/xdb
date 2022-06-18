@@ -4,7 +4,6 @@ var currentRandomGenWinType = null
 var currentRandomGenPrizeMoney = null
 var currentRandomGenWinners = null
 
-var currentURLPath = window.location.host
 
 
 
