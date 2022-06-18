@@ -18,7 +18,7 @@ from django.utils.decorators import method_decorator
 
 
 TELEGRAM_URL = "https://api.telegram.org/bot"
-TUTORIAL_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TWITTER_API_KEY = os.getenv("TWITTER_API_KEY")
 TWITTER_BEARER_TOKEN = os.getenv("TWITTER_BEARER_TOKEN")
 CHAT_ID = "1055803381"
@@ -57,7 +57,9 @@ giveawayIgnoreResponses = ["NO_POSTS"]
 class ReceiveMessageBotView(View):
 
 	def post(self, request, *args, **kwargs):
+		print(request)
 		t_data = json.loads(request.body) # Telegram Message Request converted to a Dictionary
+		print(t_data)
 
 		# The purpose of this try-except statement is to ensure that the t_data dictionary contains the correct data.
 		try:
@@ -120,7 +122,7 @@ class ReceiveMessageBotView(View):
 
 
 		response = requests.post(
-			f"{TELEGRAM_URL}{TUTORIAL_BOT_TOKEN}/sendMessage", data=data
+			f"{TELEGRAM_URL}{TELEGRAM_BOT_TOKEN}/sendMessage", data=data
 		)
 
 
