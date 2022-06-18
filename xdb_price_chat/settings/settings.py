@@ -20,7 +20,7 @@ import environ
 
 
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "xdb_price_chat.conduit.settings.production")
+
 
 
 
@@ -62,6 +62,7 @@ CRONJOBS = [
     ('* */3 * * *', 'xdb.cron.force_fail_all_running_spreadsheet_tasks')
 ]
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # redis defaults
 Q_CLUSTER = {
@@ -87,13 +88,13 @@ Q_CLUSTER = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'xdb_price_chat.urls'

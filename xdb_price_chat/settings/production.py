@@ -122,10 +122,10 @@ DATABASES = {
     # }
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'mydatabase',
-        'USER': 'root',
-        'PASSWORD': '',
-        'ROOT_PASSWORD': 'some_password',
+        'NAME': os.environ['MYSQL_DATABASE_NAME_PRODUCTION'],
+        'USER': os.environ['MYSQL_DATABASE_USERNAME_PRODUCTION'],
+        'PASSWORD': os.environ['MYSQL_DATABASE_PASSWORD_PRODUCTION'],
+        'ROOT_PASSWORD': os.environ['MYSQL_DATABASE_ROOT_PASSWORD_PRODUCTION'],
     }
 }
 
@@ -181,7 +181,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = "/bulk-management"
 
-LOGIN_URL = 'login'
+LOGIN_URL = 'login/'
 
 LOGOUT_REDIRECT_URL = '/'
 
