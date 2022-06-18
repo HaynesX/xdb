@@ -205,11 +205,14 @@ class ReceiveMessageBotView(View):
 
 		tweet_response = requests.get(getTweetsURL, headers=auth_headers, params=params)
 		
-		with open("out-twitter.txt", 'w') as f:
-			json.dump(tweet_response, f)
+		with open("out-twitterr.txt", 'w') as f:
+			f.write(f"{getTweetsURL} // {TWITTER_API_KEY} // {TWITTER_BEARER_TOKEN}")
+		
+		with open("out-twitterrr.txt", 'w') as f:
+			f.write(f"{tweet_response}")
 		
 
-		print(tweet_response)
+		
 
 
 		responseDict = tweet_response.json()["data"]
