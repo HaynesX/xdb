@@ -28,27 +28,21 @@ services:
       sh -c "
       python manage.py migrate &&
       python manage.py collectstatic &&
+      python manage.py qcluster --settings xdb_price_chat.settings.production &&
       daphne -e ssl:443:privateKey=ssl/key.pem:certKey=ssl/crt.pem:extraCertChain=ssl/chain.pem xdb_price_chat.asgi:application"
     ports:
       - 443:443
     volumes:
       - /tmp/xdb_db/mysqld:/run/mysqld
       - ../env:/home/app/ssl
+      - ../exports:/home/app/xdb/exports
     env_file:
       - ../env/prod.env
     depends_on:
       - db
     
   
-  django-q:
-    image: haynesb/xdb:${TAG}
-    command: python manage.py qcluster --settings xdb_price_chat.settings.production
-    env_file:
-      - ../env/prod.env
-    depends_on:
-      - redis
-    volumes:
-      - /tmp/xdb_db/mysqld:/run/mysqld
+  
 
 volumes:
   production-xdb-db:

@@ -341,6 +341,7 @@ class Ajax_Wins_Delete(View):
 @staff_member_required
 def export_csv(request, spreadsheetID):
     dir_path = os.path.dirname(os.path.realpath(__file__))
+    print(dir_path)
     file_path = f"{dir_path}/exports/{spreadsheetID}.xlsx"
     if os.path.exists(f"{dir_path}/exports/{spreadsheetID}.xlsx"):
         with open(file_path, 'rb') as fh:

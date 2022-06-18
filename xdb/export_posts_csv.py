@@ -144,6 +144,9 @@ def Generate_Posts_CSV(post_ids, export_posts, export_wins, win_type=None, winni
     
     df = pd.DataFrame(rowsOnlyFinalPostsWinsMatrix)
     writer = pd.ExcelWriter(f'{dir_path}/exports/{fileName}.xlsx', engine='xlsxwriter')
+    print(f'{dir_path}/exports/{fileName}.xlsx')
+    print(f'{dir_path}/exports/{fileName}.xlsx')
+    print(f'{dir_path}/exports/{fileName}.xlsx')
     df.to_excel(writer, sheet_name='Sheet1', index=False, header=False)
 
     workbook = writer.book
