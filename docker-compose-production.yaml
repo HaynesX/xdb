@@ -23,12 +23,13 @@ services:
   
   nginx:
     image: nginx:latest
+    container_name: webserver
     restart: always
     ports:
       - 80:80
       - 443:443
     volumes:
-      - ..env/nginx.conf:/etc/nginx/nginx.conf
+      - ../env/nginx.conf:/etc/nginx/nginx.conf
       - ../env:/ssl/
     depends_on:
       - web
@@ -36,6 +37,7 @@ services:
 
   web:
     image: haynesb/xdb:${TAG}
+    container_name: web
     command: >
       sh -c "
       python manage.py migrate &&
