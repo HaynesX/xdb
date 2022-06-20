@@ -42,9 +42,7 @@ services:
       sh -c "
       python manage.py migrate &&
       python manage.py collectstatic &&
-      daphne -b 0.0.0.0 -p 3838 xdb_price_chat.asgi:application"
-    ports:
-      - 3838:3838
+      daphne -b 0.0.0.0 -p 80 xdb_price_chat.asgi:application"
     expose:
       - 3838
     volumes:
@@ -64,8 +62,6 @@ services:
       - ../env/prod.env
     depends_on:
       - redis
-    expose:
-      - 3838
     volumes:
       - /tmp/xdb_db/mysqld:/run/mysqld
       - ../exports:/home/app/xdb/exports
