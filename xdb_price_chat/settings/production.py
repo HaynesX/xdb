@@ -32,7 +32,7 @@ SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 DEBUG = False
 
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "xdbpricechat.com", "0.0.0.0"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "xdbpricechat.com", "0.0.0.0", "web"]
 
 CSRF_TRUSTED_ORIGINS = ["https://xdbpricechat.com", "http://xdbpricechat.com"]
 # Application definition
