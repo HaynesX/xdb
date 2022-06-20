@@ -42,11 +42,11 @@ services:
       sh -c "
       python manage.py migrate &&
       python manage.py collectstatic &&
-      daphne -b 0.0.0.0 -p 80 xdb_price_chat.asgi:application"
+      daphne -b 0.0.0.0 -p 8001 xdb_price_chat.asgi:application"
     ports:
-      - 3838:80
+      - 8002:8001
     expose:
-      - 3838
+      - 8002
     volumes:
       - /tmp/xdb_db/mysqld:/run/mysqld
       - ../env:/home/app/ssl
