@@ -1,5 +1,7 @@
 """Gunicorn *development* config file"""
 
+import os
+
 # Django WSGI application path in pattern MODULE_NAME:VARIABLE_NAME
 wsgi_app = "xdb_price_chat.wsgi:application"
 # The granularity of Error log outputs
@@ -11,10 +13,10 @@ bind = "0.0.0.0:8000"
 # Restart workers when code changes (development only!)
 reload = True
 # Write access and error info to /var/log
-accesslog = errorlog = "/home/app/var/log/gunicorn/dev.log"
+accesslog = errorlog = os.environ["ACCESS_LOG_GUNICORN_PATH"]
 # Redirect stdout/stderr to log file
 capture_output = True
 # PID file so you can easily fetch process ID
-pidfile = "/home/app/var/run/gunicorn/dev.pid"
+pidfile = os.environ["PID_FILE_GUNICORN_PATH"]
 # Daemonize the Gunicorn process (detach & enter background)
 daemon = True

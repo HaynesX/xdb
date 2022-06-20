@@ -1,0 +1,432 @@
+[2022-06-19 16:07:50 +0100] [4463] [DEBUG] Current configuration:
+  config: config/gunicorn/dev.py
+  wsgi_app: xdb_price_chat.wsgi:application
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 2
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: True
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /Users/brandon/xdb
+  daemon: True
+  raw_env: []
+  pidfile: /Users/brandon/xdb/var/run/gunicorn/dev.pid
+  worker_tmp_dir: None
+  user: 501
+  group: 20
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /Users/brandon/xdb/var/log/gunicorn/dev.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /Users/brandon/xdb/var/log/gunicorn/dev.log
+  loglevel: debug
+  capture_output: True
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: unix:///var/run/syslog
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: gunicorn
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fac4cf1b670>
+  on_reload: <function OnReload.on_reload at 0x7fac4cf1b790>
+  when_ready: <function WhenReady.when_ready at 0x7fac4cf1b8b0>
+  pre_fork: <function Prefork.pre_fork at 0x7fac4cf1b9d0>
+  post_fork: <function Postfork.post_fork at 0x7fac4cf1baf0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fac4cf1bc10>
+  worker_int: <function WorkerInt.worker_int at 0x7fac4cf1bd30>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fac4cf1be50>
+  pre_exec: <function PreExec.pre_exec at 0x7fac4cf1bf70>
+  pre_request: <function PreRequest.pre_request at 0x7fac4cf2f0d0>
+  post_request: <function PostRequest.post_request at 0x7fac4cf2f160>
+  child_exit: <function ChildExit.child_exit at 0x7fac4cf2f280>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fac4cf2f3a0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fac4cf2f4c0>
+  on_exit: <function OnExit.on_exit at 0x7fac4cf2f5e0>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2022-06-19 16:07:50 +0100] [4463] [INFO] Starting gunicorn 20.1.0
+[2022-06-19 16:07:50 +0100] [4463] [DEBUG] Arbiter booted
+[2022-06-19 16:07:50 +0100] [4463] [INFO] Listening at: http://0.0.0.0:8000 (4463)
+[2022-06-19 16:07:50 +0100] [4463] [INFO] Using worker: sync
+[2022-06-19 16:07:50 +0100] [4465] [INFO] Booting worker with pid: 4465
+[2022-06-19 16:07:50 +0100] [4466] [INFO] Booting worker with pid: 4466
+[2022-06-19 16:07:50 +0100] [4463] [DEBUG] 2 workers
+[2022-06-19 15:08:07 +0000] [4466] [DEBUG] GET /
+127.0.0.1 - - [19/Jun/2022:15:08:08 +0000] "GET / HTTP/1.1" 200 5639 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"
+[2022-06-19 15:08:08 +0000] [4465] [DEBUG] GET /static/xdb/assets/css/style.css
+[2022-06-19 15:08:08 +0000] [4466] [DEBUG] GET /static/xdb/assets/css/bulk_management.css
+127.0.0.1 - - [19/Jun/2022:15:08:08 +0000] "GET /static/xdb/assets/css/bulk_management.css HTTP/1.1" 200 0 "http://127.0.0.1:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"
+[2022-06-19 15:08:08 +0000] [4466] [DEBUG] GET /static/xdb/assets/dist/css/datepicker-bulma.min.css
+127.0.0.1 - - [19/Jun/2022:15:08:08 +0000] "GET /static/xdb/assets/css/style.css HTTP/1.1" 200 0 "http://127.0.0.1:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"
+127.0.0.1 - - [19/Jun/2022:15:08:08 +0000] "GET /static/xdb/assets/dist/css/datepicker-bulma.min.css HTTP/1.1" 200 0 "http://127.0.0.1:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"
+[2022-06-19 15:08:08 +0000] [4465] [DEBUG] GET /static/xdb/assets/images/logo.png
+127.0.0.1 - - [19/Jun/2022:15:08:08 +0000] "GET /static/xdb/assets/images/logo.png HTTP/1.1" 200 0 "http://127.0.0.1:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"
+[2022-06-19 15:08:08 +0000] [4465] [DEBUG] GET /favicon.ico
+Not Found: /favicon.ico
+127.0.0.1 - - [19/Jun/2022:15:08:09 +0000] "GET /favicon.ico HTTP/1.1" 404 4850 "http://127.0.0.1:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"
+[2022-06-19 16:10:07 +0100] [4463] [INFO] Handling signal: term
+[2022-06-19 15:10:07 +0000] [4466] [INFO] Worker exiting (pid: 4466)
+[2022-06-19 15:10:07 +0000] [4465] [INFO] Worker exiting (pid: 4465)
+[2022-06-19 16:10:08 +0100] [4463] [INFO] Shutting down: Master
+[2022-06-19 16:15:49 +0100] [4583] [DEBUG] Current configuration:
+  config: config/gunicorn/dev.py
+  wsgi_app: xdb_price_chat.wsgi:application
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 2
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: True
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /Users/brandon/xdb
+  daemon: True
+  raw_env: []
+  pidfile: /Users/brandon/xdb/var/run/gunicorn/dev.pid
+  worker_tmp_dir: None
+  user: 501
+  group: 20
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /Users/brandon/xdb/var/log/gunicorn/dev.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /Users/brandon/xdb/var/log/gunicorn/dev.log
+  loglevel: debug
+  capture_output: True
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: unix:///var/run/syslog
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: gunicorn
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f870af0a670>
+  on_reload: <function OnReload.on_reload at 0x7f870af0a790>
+  when_ready: <function WhenReady.when_ready at 0x7f870af0a8b0>
+  pre_fork: <function Prefork.pre_fork at 0x7f870af0a9d0>
+  post_fork: <function Postfork.post_fork at 0x7f870af0aaf0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f870af0ac10>
+  worker_int: <function WorkerInt.worker_int at 0x7f870af0ad30>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f870af0ae50>
+  pre_exec: <function PreExec.pre_exec at 0x7f870af0af70>
+  pre_request: <function PreRequest.pre_request at 0x7f870af1e0d0>
+  post_request: <function PostRequest.post_request at 0x7f870af1e160>
+  child_exit: <function ChildExit.child_exit at 0x7f870af1e280>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f870af1e3a0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f870af1e4c0>
+  on_exit: <function OnExit.on_exit at 0x7f870af1e5e0>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2022-06-19 16:15:49 +0100] [4583] [INFO] Starting gunicorn 20.1.0
+[2022-06-19 16:15:49 +0100] [4583] [DEBUG] Arbiter booted
+[2022-06-19 16:15:49 +0100] [4583] [INFO] Listening at: http://0.0.0.0:8000 (4583)
+[2022-06-19 16:15:49 +0100] [4583] [INFO] Using worker: sync
+[2022-06-19 16:15:49 +0100] [4585] [INFO] Booting worker with pid: 4585
+[2022-06-19 16:15:49 +0100] [4586] [INFO] Booting worker with pid: 4586
+[2022-06-19 16:15:49 +0100] [4583] [DEBUG] 2 workers
+[2022-06-19 15:16:07 +0000] [4585] [DEBUG] GET /
+127.0.0.1 - - [19/Jun/2022:15:16:08 +0000] "GET / HTTP/1.1" 200 5639 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"
+[2022-06-19 15:16:08 +0000] [4585] [DEBUG] GET /static/xdb/assets/css/bulk_management.css
+[2022-06-19 15:16:08 +0000] [4586] [DEBUG] GET /static/xdb/assets/css/style.css
+127.0.0.1 - - [19/Jun/2022:15:16:08 +0000] "GET /static/xdb/assets/css/style.css HTTP/1.1" 304 0 "http://127.0.0.1:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"
+127.0.0.1 - - [19/Jun/2022:15:16:08 +0000] "GET /static/xdb/assets/css/bulk_management.css HTTP/1.1" 304 0 "http://127.0.0.1:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"
+[2022-06-19 15:16:08 +0000] [4586] [DEBUG] GET /static/xdb/assets/dist/css/datepicker-bulma.min.css
+127.0.0.1 - - [19/Jun/2022:15:16:08 +0000] "GET /static/xdb/assets/dist/css/datepicker-bulma.min.css HTTP/1.1" 304 0 "http://127.0.0.1:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"
+[2022-06-19 15:16:08 +0000] [4586] [DEBUG] GET /static/xdb/assets/images/logo.png
+127.0.0.1 - - [19/Jun/2022:15:16:08 +0000] "GET /static/xdb/assets/images/logo.png HTTP/1.1" 304 0 "http://127.0.0.1:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"
+[2022-06-19 16:18:43 +0100] [4583] [INFO] Handling signal: term
+[2022-06-19 15:18:43 +0000] [4586] [INFO] Worker exiting (pid: 4586)
+[2022-06-19 15:18:43 +0000] [4585] [INFO] Worker exiting (pid: 4585)
+[2022-06-19 16:18:43 +0100] [4583] [INFO] Shutting down: Master
+[2022-06-19 19:59:10 +0100] [1982] [DEBUG] Current configuration:
+  config: config/gunicorn/dev.py
+  wsgi_app: xdb_price_chat.wsgi:application
+  bind: ['0.0.0.0:8000']
+  backlog: 2048
+  workers: 2
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: True
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /Users/brandon/xdb
+  daemon: True
+  raw_env: []
+  pidfile: /Users/brandon/xdb/var/run/gunicorn/dev.pid
+  worker_tmp_dir: None
+  user: 501
+  group: 20
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1']
+  accesslog: /Users/brandon/xdb/var/log/gunicorn/dev.log
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /Users/brandon/xdb/var/log/gunicorn/dev.log
+  loglevel: debug
+  capture_output: True
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  syslog_addr: unix:///var/run/syslog
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: False
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: gunicorn
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7fd7d371b670>
+  on_reload: <function OnReload.on_reload at 0x7fd7d371b790>
+  when_ready: <function WhenReady.when_ready at 0x7fd7d371b8b0>
+  pre_fork: <function Prefork.pre_fork at 0x7fd7d371b9d0>
+  post_fork: <function Postfork.post_fork at 0x7fd7d371baf0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7fd7d371bc10>
+  worker_int: <function WorkerInt.worker_int at 0x7fd7d371bd30>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7fd7d371be50>
+  pre_exec: <function PreExec.pre_exec at 0x7fd7d371bf70>
+  pre_request: <function PreRequest.pre_request at 0x7fd7d372f0d0>
+  post_request: <function PostRequest.post_request at 0x7fd7d372f160>
+  child_exit: <function ChildExit.child_exit at 0x7fd7d372f280>
+  worker_exit: <function WorkerExit.worker_exit at 0x7fd7d372f3a0>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7fd7d372f4c0>
+  on_exit: <function OnExit.on_exit at 0x7fd7d372f5e0>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  strip_header_spaces: False
+[2022-06-19 19:59:10 +0100] [1982] [INFO] Starting gunicorn 20.1.0
+[2022-06-19 19:59:10 +0100] [1982] [DEBUG] Arbiter booted
+[2022-06-19 19:59:10 +0100] [1982] [INFO] Listening at: http://0.0.0.0:8000 (1982)
+[2022-06-19 19:59:10 +0100] [1982] [INFO] Using worker: sync
+[2022-06-19 19:59:10 +0100] [1984] [INFO] Booting worker with pid: 1984
+[2022-06-19 19:59:10 +0100] [1985] [INFO] Booting worker with pid: 1985
+[2022-06-19 19:59:10 +0100] [1982] [DEBUG] 2 workers
+[2022-06-19 18:59:23 +0000] [1985] [DEBUG] GET /
+127.0.0.1 - - [19/Jun/2022:18:59:24 +0000] "GET / HTTP/1.1" 200 5639 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"
+[2022-06-19 18:59:24 +0000] [1984] [DEBUG] GET /static/xdb/assets/css/style.css
+[2022-06-19 18:59:24 +0000] [1985] [DEBUG] GET /static/xdb/assets/css/bulk_management.css
+127.0.0.1 - - [19/Jun/2022:18:59:24 +0000] "GET /static/xdb/assets/css/bulk_management.css HTTP/1.1" 304 0 "http://127.0.0.1:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"
+[2022-06-19 18:59:24 +0000] [1985] [DEBUG] GET /static/xdb/assets/dist/css/datepicker-bulma.min.css
+127.0.0.1 - - [19/Jun/2022:18:59:24 +0000] "GET /static/xdb/assets/css/style.css HTTP/1.1" 304 0 "http://127.0.0.1:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"
+127.0.0.1 - - [19/Jun/2022:18:59:24 +0000] "GET /static/xdb/assets/dist/css/datepicker-bulma.min.css HTTP/1.1" 304 0 "http://127.0.0.1:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"
+[2022-06-19 18:59:24 +0000] [1985] [DEBUG] GET /static/xdb/assets/images/logo.png
+127.0.0.1 - - [19/Jun/2022:18:59:24 +0000] "GET /static/xdb/assets/images/logo.png HTTP/1.1" 304 0 "http://127.0.0.1:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"
+[2022-06-19 18:59:24 +0000] [1984] [DEBUG] GET /favicon.ico
+Not Found: /favicon.ico
+127.0.0.1 - - [19/Jun/2022:18:59:25 +0000] "GET /favicon.ico HTTP/1.1" 404 4850 "http://127.0.0.1:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36"
+[2022-06-20 00:27:30 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:1984)
+[2022-06-20 00:27:30 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:1985)
+[2022-06-19 23:27:30 +0000] [1985] [INFO] Worker exiting (pid: 1985)
+[2022-06-19 23:27:30 +0000] [1984] [INFO] Worker exiting (pid: 1984)
+[2022-06-20 00:27:31 +0100] [3187] [INFO] Booting worker with pid: 3187
+[2022-06-20 00:27:31 +0100] [3188] [INFO] Booting worker with pid: 3188
+[2022-06-20 01:05:01 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3187)
+[2022-06-20 01:05:01 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3188)
+[2022-06-20 00:05:01 +0000] [3188] [INFO] Worker exiting (pid: 3188)
+[2022-06-20 00:05:01 +0000] [3187] [INFO] Worker exiting (pid: 3187)
+[2022-06-20 01:05:01 +0100] [3197] [INFO] Booting worker with pid: 3197
+[2022-06-20 01:05:01 +0100] [3198] [INFO] Booting worker with pid: 3198
+[2022-06-20 01:22:09 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3197)
+[2022-06-20 01:22:09 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3198)
+[2022-06-20 00:22:09 +0000] [3197] [INFO] Worker exiting (pid: 3197)
+[2022-06-20 00:22:09 +0000] [3198] [INFO] Worker exiting (pid: 3198)
+[2022-06-20 01:22:09 +0100] [3205] [INFO] Booting worker with pid: 3205
+[2022-06-20 01:22:09 +0100] [3206] [INFO] Booting worker with pid: 3206
+[2022-06-20 02:04:46 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3205)
+[2022-06-20 02:04:46 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3206)
+[2022-06-20 01:04:46 +0000] [3205] [INFO] Worker exiting (pid: 3205)
+[2022-06-20 01:04:46 +0000] [3206] [INFO] Worker exiting (pid: 3206)
+[2022-06-20 02:04:46 +0100] [3212] [INFO] Booting worker with pid: 3212
+[2022-06-20 02:04:46 +0100] [3213] [INFO] Booting worker with pid: 3213
+[2022-06-20 02:36:07 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3212)
+[2022-06-20 02:36:07 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3213)
+[2022-06-20 01:36:07 +0000] [3213] [INFO] Worker exiting (pid: 3213)
+[2022-06-20 01:36:07 +0000] [3212] [INFO] Worker exiting (pid: 3212)
+[2022-06-20 02:36:07 +0100] [3232] [INFO] Booting worker with pid: 3232
+[2022-06-20 02:36:07 +0100] [1982] [DEBUG] 1 workers
+[2022-06-20 02:36:07 +0100] [3233] [INFO] Booting worker with pid: 3233
+[2022-06-20 02:36:07 +0100] [1982] [DEBUG] 2 workers
+[2022-06-20 03:34:00 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3232)
+[2022-06-20 02:34:01 +0000] [3232] [INFO] Worker exiting (pid: 3232)
+[2022-06-20 03:34:01 +0100] [3248] [INFO] Booting worker with pid: 3248
+[2022-06-20 03:50:46 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3233)
+[2022-06-20 03:50:46 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3248)
+[2022-06-20 02:50:46 +0000] [3248] [INFO] Worker exiting (pid: 3248)
+[2022-06-20 02:50:46 +0000] [3233] [INFO] Worker exiting (pid: 3233)
+[2022-06-20 03:50:46 +0100] [3259] [INFO] Booting worker with pid: 3259
+[2022-06-20 03:50:46 +0100] [1982] [DEBUG] 1 workers
+[2022-06-20 03:50:46 +0100] [3260] [INFO] Booting worker with pid: 3260
+[2022-06-20 03:50:46 +0100] [1982] [DEBUG] 2 workers
+[2022-06-20 04:08:42 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3259)
+[2022-06-20 04:08:43 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3260)
+[2022-06-20 03:08:43 +0000] [3259] [INFO] Worker exiting (pid: 3259)
+[2022-06-20 03:08:43 +0000] [3260] [INFO] Worker exiting (pid: 3260)
+[2022-06-20 04:08:43 +0100] [3313] [INFO] Booting worker with pid: 3313
+[2022-06-20 04:08:43 +0100] [3314] [INFO] Booting worker with pid: 3314
+[2022-06-20 05:22:23 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3313)
+[2022-06-20 05:22:24 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3314)
+[2022-06-20 04:22:24 +0000] [3313] [INFO] Worker exiting (pid: 3313)
+[2022-06-20 04:22:24 +0000] [3314] [INFO] Worker exiting (pid: 3314)
+[2022-06-20 05:22:24 +0100] [3324] [INFO] Booting worker with pid: 3324
+[2022-06-20 05:22:24 +0100] [1982] [WARNING] Worker with pid 3313 was terminated due to signal 9
+[2022-06-20 05:22:24 +0100] [3325] [INFO] Booting worker with pid: 3325
+[2022-06-20 05:29:39 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3324)
+[2022-06-20 05:29:40 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3325)
+[2022-06-20 04:29:40 +0000] [3324] [INFO] Worker exiting (pid: 3324)
+[2022-06-20 04:29:40 +0000] [3325] [INFO] Worker exiting (pid: 3325)
+[2022-06-20 05:29:40 +0100] [3357] [INFO] Booting worker with pid: 3357
+[2022-06-20 05:29:40 +0100] [1982] [DEBUG] 1 workers
+[2022-06-20 05:29:40 +0100] [3358] [INFO] Booting worker with pid: 3358
+[2022-06-20 05:29:40 +0100] [1982] [DEBUG] 2 workers
+[2022-06-20 06:34:17 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3357)
+[2022-06-20 06:34:17 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3358)
+[2022-06-20 05:34:17 +0000] [3358] [INFO] Worker exiting (pid: 3358)
+[2022-06-20 05:34:17 +0000] [3357] [INFO] Worker exiting (pid: 3357)
+[2022-06-20 06:34:17 +0100] [3377] [INFO] Booting worker with pid: 3377
+[2022-06-20 06:34:17 +0100] [1982] [DEBUG] 1 workers
+[2022-06-20 06:34:17 +0100] [3378] [INFO] Booting worker with pid: 3378
+[2022-06-20 06:34:17 +0100] [1982] [DEBUG] 2 workers
+[2022-06-20 07:35:00 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3377)
+[2022-06-20 07:35:00 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3378)
+[2022-06-20 06:35:00 +0000] [3378] [INFO] Worker exiting (pid: 3378)
+[2022-06-20 06:35:00 +0000] [3377] [INFO] Worker exiting (pid: 3377)
+[2022-06-20 07:35:00 +0100] [3387] [INFO] Booting worker with pid: 3387
+[2022-06-20 07:35:00 +0100] [1982] [WARNING] Worker with pid 3377 was terminated due to signal 9
+[2022-06-20 07:35:00 +0100] [1982] [DEBUG] 1 workers
+[2022-06-20 07:35:00 +0100] [3388] [INFO] Booting worker with pid: 3388
+[2022-06-20 07:35:00 +0100] [1982] [DEBUG] 2 workers
+[2022-06-20 08:56:00 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3387)
+[2022-06-20 08:56:00 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3388)
+[2022-06-20 07:56:00 +0000] [3387] [INFO] Worker exiting (pid: 3387)
+[2022-06-20 07:56:00 +0000] [3388] [INFO] Worker exiting (pid: 3388)
+[2022-06-20 08:56:00 +0100] [3404] [INFO] Booting worker with pid: 3404
+[2022-06-20 08:56:00 +0100] [3405] [INFO] Booting worker with pid: 3405
+[2022-06-20 10:05:29 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3404)
+[2022-06-20 10:05:29 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3405)
+[2022-06-20 09:05:29 +0000] [3404] [INFO] Worker exiting (pid: 3404)
+[2022-06-20 09:05:29 +0000] [3405] [INFO] Worker exiting (pid: 3405)
+[2022-06-20 10:05:30 +0100] [3416] [INFO] Booting worker with pid: 3416
+[2022-06-20 10:05:30 +0100] [3417] [INFO] Booting worker with pid: 3417
+[2022-06-20 10:49:42 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3416)
+[2022-06-20 10:49:42 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3417)
+[2022-06-20 09:49:42 +0000] [3417] [INFO] Worker exiting (pid: 3417)
+[2022-06-20 09:49:42 +0000] [3416] [INFO] Worker exiting (pid: 3416)
+[2022-06-20 10:49:42 +0100] [3436] [INFO] Booting worker with pid: 3436
+[2022-06-20 10:49:42 +0100] [1982] [DEBUG] 1 workers
+[2022-06-20 10:49:42 +0100] [3437] [INFO] Booting worker with pid: 3437
+[2022-06-20 10:49:42 +0100] [1982] [DEBUG] 2 workers
+[2022-06-20 11:33:51 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3436)
+[2022-06-20 11:33:51 +0100] [1982] [CRITICAL] WORKER TIMEOUT (pid:3437)
+[2022-06-20 10:33:51 +0000] [3436] [INFO] Worker exiting (pid: 3436)
+[2022-06-20 10:33:51 +0000] [3437] [INFO] Worker exiting (pid: 3437)
+[2022-06-20 11:33:51 +0100] [3445] [INFO] Booting worker with pid: 3445
+[2022-06-20 11:33:51 +0100] [1982] [DEBUG] 1 workers
+[2022-06-20 11:33:51 +0100] [3446] [INFO] Booting worker with pid: 3446
+[2022-06-20 11:33:51 +0100] [1982] [DEBUG] 2 workers
