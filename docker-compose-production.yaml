@@ -38,7 +38,7 @@ services:
       sh -c "
       python manage.py migrate &&
       python manage.py collectstatic &&
-      daphne -b 0.0.0.0 -p 80 django_project.asgi:application"
+      daphne -b 0.0.0.0 -p 80 xdb_price_chat.asgi:application"
     ports:
       - 3838:80
     expose:
