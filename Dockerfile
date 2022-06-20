@@ -9,4 +9,4 @@ RUN pip install -r /home/app/requirements.txt
 
 COPY . /home/app
 
-EXPOSE 3838
+EXPOSE 80
