@@ -11,10 +11,10 @@ services:
       - MYSQL_ROOT_PASSWORD=${MYSQL_DATABASE_ROOT_PASSWORD_STAGING}
     ports:
       # <Port exposed> : < MySQL Port running inside container>
-      - '3307:3307'
+      - '3307:3306'
       # Where our data will be persisted
     volumes:
-      - /tmp/xdb_db_staging/mysqld:/var/run/mysqld
+      - /tmp/xdb_db/mysqld:/var/run/mysqld
       - staging-xdb-db:/var/lib/mysql
     networks:
       - staging_net
@@ -41,7 +41,7 @@ services:
     expose:
       - 8001
     volumes:
-      - /tmp/xdb_db_staging/mysqld:/run/mysqld
+      - /tmp/xdb_db/mysqld:/run/mysqld
       - ../env:/home/app/ssl
       - ../exports:/home/app/xdb/exports
 
@@ -63,7 +63,7 @@ services:
     depends_on:
       - redis_staging
     volumes:
-      - /tmp/xdb_db_staging/mysqld:/run/mysqld
+      - /tmp/xdb_db/mysqld:/run/mysqld
       - ../exports:/home/app/xdb/exports
     networks:
       - staging_net
