@@ -8,5 +8,3 @@ COPY requirements.txt /home/app
 RUN pip install -r /home/app/requirements.txt
 
 COPY . /home/app
-
-EXPOSE 8000

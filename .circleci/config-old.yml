@@ -20,25 +20,6 @@ jobs:
             pip install backports.zoneinfo
             pip install -r requirements.txt
 
-
-  deploy-staging:
-    docker:
-      - image: cimg/python:3.10.2
-    steps:
-      - checkout
-      - setup_remote_docker:
-          version: 19.03.13
-      - run:
-          name: Build and push Docker image
-          command: |
-            echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
-            docker build -t haynesb/xdb:$CIRCLE_TAG .
-            docker push haynesb/xdb:$CIRCLE_TAG
-      - run:
-          name: SSH in to DigitalOcean Server & Run Containers via Deploy.sh Script
-          command: ssh -oStrictHostKeyChecking=no -v $DROPLET_USER_STAGING@$DROPLET_IP "bash deploy-staging.sh $CIRCLE_TAG $DJANGO_SETTINGS_MODULE_STAGING $MYSQL_DATABASE_NAME_STAGING $MYSQL_DATABASE_USERNAME_STAGING $MYSQL_DATABASE_PASSWORD_STAGING $MYSQL_DATABASE_ROOT_PASSWORD_STAGING"
-
-
           
   deploy-production:
     docker:
@@ -67,26 +48,9 @@ workflows:
           filters:
             tags:
               only: /.*/
-      - deploy-staging:
-          requires:
-          - build-and-test
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
-      - hold:
-          type: approval
-          requires:
-            - deploy-staging
-          filters:
-            branches:
-              ignore: /.*/
-            tags:
-              only: /^v.*/
       - deploy-production:
           requires:
-          - hold
+          - build-and-test
           filters:
             branches:
               ignore: /.*/
