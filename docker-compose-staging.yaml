@@ -14,7 +14,6 @@ services:
       - '3307:3306'
       # Where our data will be persisted
     volumes:
-      - ../tmp/:/var/run/mysqld
       - staging-xdb-db:/var/lib/mysql
     networks:
       - staging_net
@@ -41,7 +40,6 @@ services:
     expose:
       - 8001
     volumes:
-      - ../tmp/:/var/run/mysqld
       - ../env:/home/app/ssl
       - ../exports:/home/app/xdb/exports
 
@@ -63,7 +61,6 @@ services:
     depends_on:
       - redis_staging
     volumes:
-      - ../tmp/:/var/run/mysqld
       - ../exports:/home/app/xdb/exports
     networks:
       - staging_net
