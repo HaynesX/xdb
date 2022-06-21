@@ -54,7 +54,7 @@ services:
 
   django-q_staging:
     image: haynesb/xdb:${TAG}
-    command: python manage.py qcluster --settings xdb_price_chat.settings.production
+    command: python manage.py qcluster --settings xdb_price_chat.settings.staging
     container_name: django-q_staging
     env_file:
       - ../env/staging.env
