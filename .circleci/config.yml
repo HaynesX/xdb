@@ -44,15 +44,6 @@ jobs:
     docker:
       - image: cimg/python:3.10.2
     steps:
-      - checkout
-      - setup_remote_docker:
-          version: 19.03.13
-      - run:
-          name: Build and push Docker image
-          command: |
-            echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
-            docker build -t haynesb/xdb:$CIRCLE_TAG .
-            docker push haynesb/xdb:$CIRCLE_TAG
       - run:
           name: SSH in to DigitalOcean Server & Run Containers via Deploy.sh Script
           command: ssh -oStrictHostKeyChecking=no -v $DROPLET_USER_PROD@$DROPLET_IP "bash deploy-production.sh $CIRCLE_TAG $DJANGO_SETTINGS_MODULE $MYSQL_DATABASE_NAME_PRODUCTION $MYSQL_DATABASE_USERNAME_PRODUCTION $MYSQL_DATABASE_PASSWORD_PRODUCTION $MYSQL_DATABASE_ROOT_PASSWORD_PRODUCTION"

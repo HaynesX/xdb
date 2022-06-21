@@ -32,9 +32,9 @@ SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 DEBUG = False
 
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "xdbpricechat.com", "0.0.0.0", "web_staging", "e4e5-104-248-165-255.eu.ngrok.io"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "xdbpricechat.com", "0.0.0.0", "web_staging", "5c3d-104-248-165-255.ngrok.io"]
 
-CSRF_TRUSTED_ORIGINS = ["https://xdbpricechat.com", "http://xdbpricechat.com", "https://e4e5-104-248-165-255.eu.ngrok.io"]
+CSRF_TRUSTED_ORIGINS = ["https://xdbpricechat.com", "http://xdbpricechat.com", "https://5c3d-104-248-165-255.ngrok.io"]
 # Application definition
 
 INSTALLED_APPS = [
