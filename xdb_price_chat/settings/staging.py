@@ -182,6 +182,8 @@ LOGIN_URL = '/login/'
 
 LOGIN_REDIRECT_URL = "/bulk-management"
 
+CSRF_COOKIE_HTTPONLY = True
+
 
 LOGOUT_REDIRECT_URL = '/'
 
