@@ -9,7 +9,6 @@ services:
       - MYSQL_USER=${MYSQL_DATABASE_USERNAME_STAGING}
       - MYSQL_PASSWORD=${MYSQL_DATABASE_PASSWORD_STAGING}
       - MYSQL_ROOT_PASSWORD=${MYSQL_DATABASE_ROOT_PASSWORD_STAGING}
-      - MYSQL_TCP_PORT=3307
     ports:
       # <Port exposed> : < MySQL Port running inside container>
       - '3307:3307'
