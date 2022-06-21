@@ -23,7 +23,7 @@ services:
     image: redis:alpine
     container_name: redis_staging
     ports:
-      - 6380:6380
+      - 6380:6379
     networks:
       - staging_net
   
