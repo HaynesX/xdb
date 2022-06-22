@@ -184,8 +184,6 @@ LOGIN_URL = '/login/'
 
 LOGIN_REDIRECT_URL = "/bulk-management"
 
-CSRF_COOKIE_HTTPONLY = True
-
 
 LOGOUT_REDIRECT_URL = '/'
 
@@ -200,11 +198,3 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-
-# SESSION_COOKIE_SECURE = False
-
-# CSRF_COOKIE_DOMAIN = None
-
-# CSRF_COOKIE_SECURE = False
-
-# SECURE_SSL_REDIRECT = False
