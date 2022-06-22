@@ -81,6 +81,7 @@ Q_CLUSTER = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    #django.middleware.csrf.CsrfViewMiddleware,
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -134,7 +135,7 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [("redis", 6380)],
+            "hosts": [("redis_staging", 6379)],
         },
     },
 }
