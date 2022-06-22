@@ -126,7 +126,7 @@ DATABASES = {
         'PASSWORD': os.environ['MYSQL_DATABASE_PASSWORD_STAGING'],
         'ROOT_PASSWORD': os.environ['MYSQL_DATABASE_ROOT_PASSWORD_STAGING'],
         'HOST': "db_staging",
-        'PORT': '3307'
+        'PORT': '3306'
     }
 }
 
