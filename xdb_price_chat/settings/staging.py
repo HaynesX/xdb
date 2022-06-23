@@ -67,8 +67,8 @@ Q_CLUSTER = {
     'save_limit': 0,
     'label': 'Django Q',
     'redis': {
-        'host': 'redis',
-        'port': 6380,
+        'host': 'redis_staging',
+        'port': 6379,
         'db': 0,
         'password': None,
         'socket_timeout': None,
