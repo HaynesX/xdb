@@ -41,7 +41,15 @@ input[type=radio] {
     /* appearance:initial; */
 }
 
+.no_posts {
+    display: block;
+    text-align: center;
+}
 
+.no_wins {
+    display: block;
+    text-align: center;
+}
 
 .bulk_management_main_container {
     display: flex;

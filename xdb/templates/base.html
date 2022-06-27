@@ -51,7 +51,8 @@
                         <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Leaderboard</a></li>
                         <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="https://t.me/DigitalBitsPriceChat" target="_blank">Telegram</a></li>
                         {% if user.is_staff %}
-                        <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{% url 'giveaway_management' %}">MANAGEMENT DASHBOARD</a></li>
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{% url 'bulk_management' %}">DASHBOARD</a></li>
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{% url 'giveaway_management' %}">OLD DASHBOARD*</a></li>
                         <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="{% url 'logout' %}">LOGOUT</a></li>
                         {% endif %}
                     </ul>
@@ -102,13 +103,11 @@
 
 
 
-{% if "/management/" in request.path %}
-<script src="{% static 'xdb/assets/js/main.js' %}"></script>
-{% endif %}
-
 {% if request.path == "/bulk-management/" %}
 <script src="{% static 'xdb/assets/dist/js/datepicker-full.min.js' %}"></script>
 <script src="{% static 'xdb/assets/js/bulk_management.js' %}"></script>
+{% else %}
+<script src="{% static 'xdb/assets/js/main.js' %}"></script>
 {% endif %}
 
 

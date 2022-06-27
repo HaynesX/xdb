@@ -6,6 +6,47 @@ var currentRandomGenWinners = null
 
 
 
+$('.slick-slider').slick({
+    dots: true,
+    infinite: true,
+    speed: 1000,
+    fade: true,
+    cssEase: 'linear',
+    autoplay: true,
+    autoplaySpeed: 8000,
+});
+
+$(document).ready(function () {
+    setTimeout(function () { $(".page-loader").hide(); }, 700);
+});
+
+$(document).on('click', '.navbar-toggle', function () {
+    $('#custom-collapse').toggleClass('in');
+    $('#custom-collapse').toggleClass('animation-js');
+
+    if($('#custom-collapse').hasClass('in')){
+        setTimeout(() => {
+            $('#custom-collapse').removeClass('animation-js')
+        },1000)
+    }
+
+    else if (!$('#custom-collapse').hasClass('in')){
+        $('#custom-collapse').removeClass('animation-js')
+    }
+});
+
+$(".menu-item").click(function () {
+    if ($(this).hasClass("open")) {
+        $(".menu-item").removeClass("open");
+    }
+    else {
+        $(".menu-item").removeClass("open");
+        $(this).addClass("open");
+    }
+});
+
+
+
 
 socket.onmessage = function(e) {
     const data = JSON.parse(e.data)
@@ -105,7 +146,8 @@ function getPostFiltersInput() {
 
     })
 
-    $(".posts_added_container").empty()
+    // $(".posts_added_container").empty()
+    $('.posts_added_container').find('*').not('.no_posts').remove();
 
     return [username, win, startDate, endDate]
 
@@ -872,7 +914,7 @@ $("#giveaway_cancel_winners").click(function(){
 
 
 
-$(document).on('click','.test-ajax-send-posts',function(){
+$(document).on('click','#ajax-search-posts',function(){
 
     filterValues = getPostFiltersInput()
 
@@ -901,6 +943,17 @@ $(document).on('click','.test-ajax-send-posts',function(){
 
 
             postsContainer = $(".posts_added_container")
+
+            if (response.data["posts"].length == 0){
+                $(".no_posts").css("display", "block")
+                console.log("yo")
+            }
+            else {
+                $(".no_posts").css("display", "none")
+            }
+
+            console.log(response.data["posts"].length)
+
 
             response.data["posts"].forEach(post => {
 
@@ -979,7 +1032,16 @@ $(document).on('click','.test-ajax-send-posts',function(){
 
 
 
+function checkIfEmptyPostsWins(){
+    if($(".post_wins_cards_container").children().length == 1){
+        $(".no_wins").css("display", "block")
+    }
+    else {
+        $(".no_wins").css("display", "none")
+    }
 
+    console.log($(".post_wins_cards_container").children().length)
+}
 
 
 
@@ -1016,6 +1078,8 @@ function createPostWinsCard(post_id, username, telegramID, tweetID) {
 
 
     )
+
+    checkIfEmptyPostsWins()
 
 
 
@@ -1056,6 +1120,7 @@ function createPostWinsInsideCard(post_id) {
 
                 
             };
+            checkIfEmptyPostsWins()
     
 }
 
@@ -1064,6 +1129,7 @@ function createPostWinsInsideCard(post_id) {
 function removeAllPostWinsInsideCard(post_id) {
     var currentPostWinsContainer = $(`[post_wins_wins_container_id=` + post_id + `]`)
     currentPostWinsContainer.empty()
+    checkIfEmptyPostsWins()
 }
 
 
@@ -1115,6 +1181,8 @@ $(document).on("change", "#export_wins_checkbox", function(e) {
 
 
 
+
+
 $(document).on("change", ".post-checkbox-input", function(e) {
 
     console.log("yo")
@@ -1125,6 +1193,7 @@ $(document).on("change", ".post-checkbox-input", function(e) {
     var postUsername = currentPost[0]
     var postTweetID = currentPost[1]
     var postTelegramID = currentPost[2]
+
 
     
 
@@ -1140,6 +1209,8 @@ $(document).on("change", ".post-checkbox-input", function(e) {
 
             createPostWinsCard(postID, postUsername, postTelegramID, postTweetID)
             createPostWinsInsideCard(postID)
+
+            // $(".no_wins").css("display", "none")
 
 
 
@@ -1223,7 +1294,10 @@ $(document).on("change", ".post-checkbox-input", function(e) {
     }
     else {
         $(`[post_win_card_container_id=` + postID + `]`).remove()
+        
     }
+
+    checkIfEmptyPostsWins()
     
 
 
@@ -1455,6 +1529,8 @@ $("#delete_wins").click(function(){
     
     
     })
+
+    checkIfEmptyPostsWins()
 
 
 

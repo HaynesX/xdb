@@ -2833,12 +2833,12 @@ background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+
 @media (max-width: 991px) {
   .sidebar .navbar-custom .navbar-collapse.in {
     transition: height 0.35s ease;
-    overflow: visible;
+    overflow: auto;
     height: auto;
   }
 }
 .sidebar .navbar-custom .navbar-collapse.animation-js {
-  height: 281px;
+  height: auto;
 }
 .sidebar .navbar-custom li > a {
   color: rgba(255, 255, 255, 0.7);
