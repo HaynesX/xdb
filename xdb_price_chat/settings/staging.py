@@ -53,7 +53,7 @@ INSTALLED_APPS = [
 ]
 
 CRONJOBS = [
-    ('* */3 * * *', 'xdb.cron.force_fail_all_running_spreadsheet_tasks')
+    ('*/59 * * * *', 'xdb.cron.force_fail_all_running_spreadsheet_tasks')
 ]
 
 
