@@ -81,7 +81,7 @@ Q_CLUSTER = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    #django.middleware.csrf.CsrfViewMiddleware,
+    'django.middleware.csrf.CsrfViewMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
