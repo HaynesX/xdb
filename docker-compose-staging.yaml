@@ -1,0 +1,75 @@
+version: '3'
+services:
+  db_staging:
+    image: mysql
+    restart: always
+    container_name: db_staging
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE_NAME_STAGING}
+      - MYSQL_USER=${MYSQL_DATABASE_USERNAME_STAGING}
+      - MYSQL_PASSWORD=${MYSQL_DATABASE_PASSWORD_STAGING}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_DATABASE_ROOT_PASSWORD_STAGING}
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3307:3306'
+      # Where our data will be persisted
+    volumes:
+      - staging-xdb-db:/var/lib/mysql
+    networks:
+      - staging_net
+  
+  redis_staging:
+    image: redis:alpine
+    container_name: redis_staging
+    ports:
+      - 6380:6379
+    networks:
+      - staging_net
+  
+
+  web_staging:
+    image: haynesb/xdb:${TAG}
+    container_name: web_staging
+    command: >
+      sh -c "
+      python manage.py migrate &&
+      python manage.py collectstatic &&
+      daphne -b 0.0.0.0 -p 8001 xdb_price_chat.asgi:application"
+    ports:
+      - 8001:8001
+    expose:
+      - 8001
+    volumes:
+      - ../env:/home/app/ssl
+      - ../exports:/home/app/xdb/exports
+
+    env_file:
+      - ../env/staging.env
+    depends_on:
+      - db_staging
+    networks:
+      - staging_net
+
+  django-q_staging:
+    image: haynesb/xdb:${TAG}
+    command: python manage.py qcluster --settings xdb_price_chat.settings.staging
+    container_name: django-q_staging
+    env_file:
+      - ../env/staging.env
+    expose:
+      - 8001
+    depends_on:
+      - redis_staging
+    volumes:
+      - ../exports:/home/app/xdb/exports
+    networks:
+      - staging_net
+    
+
+networks:
+  staging_net:
+  
+
+volumes:
+  staging-xdb-db:
+
