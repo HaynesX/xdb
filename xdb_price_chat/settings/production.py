@@ -126,6 +126,10 @@ DATABASES = {
         'USER': os.environ['MYSQL_DATABASE_USERNAME_PRODUCTION'],
         'PASSWORD': os.environ['MYSQL_DATABASE_PASSWORD_PRODUCTION'],
         'ROOT_PASSWORD': os.environ['MYSQL_DATABASE_ROOT_PASSWORD_PRODUCTION'],
+        'OPTIONS': {
+                    'charset': 'utf8mb4',
+                    'use_unicode': True
+                    }
     }
 }
 

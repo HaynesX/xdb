@@ -127,9 +127,14 @@ DATABASES = {
         'PASSWORD': os.environ['MYSQL_DATABASE_PASSWORD_STAGING'],
         'ROOT_PASSWORD': os.environ['MYSQL_DATABASE_ROOT_PASSWORD_STAGING'],
         'HOST': "db_staging",
-        'PORT': '3306'
+        'PORT': '3306',
+        'OPTIONS': {
+                    'charset': 'utf8mb4',
+                    'use_unicode': True
+                    }
+                }
     }
-}
+
 
 CHANNEL_LAYERS = {
     "default": {
