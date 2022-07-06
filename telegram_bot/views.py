@@ -51,7 +51,7 @@ giveawayResponses = {
 
 giveawayIgnoreResponses = ["NO_POSTS"]
 
-allowed_chat_ids = ["-1001510845604", "-1001571527866"]
+# allowed_chat_ids = ["-1001510845604", "-1001571527866"]
 
 
 
@@ -69,8 +69,8 @@ class ReceiveMessageBotView(View):
 			message_id = t_message["message_id"] # Message ID of the Message
 			t_chatID = t_message["chat"]["id"] # Chat ID of the Message (Channel ID)
 
-			if t_chatID not in allowed_chat_ids and os.getenv("DJANGO_SETTINGS_MODULE") == "xdb_price_chat.settings.production":
-				return JsonResponse({"ok": "POST Request Invalid. Ignoring."})
+			# if t_chatID not in allowed_chat_ids and os.getenv("DJANGO_SETTINGS_MODULE") == "xdb_price_chat.settings.production":
+			# 	return JsonResponse({"ok": "POST Request Invalid. Ignoring."})
 			
 			
 
